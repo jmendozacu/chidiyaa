@@ -1,0 +1,45 @@
+<?php
+/**
+ * Softprodigy System Solutions Pvt. Ltd
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.idealiagroup.com/magento-ext-license.html
+ *
+ * @category    Softprodigy
+ * @package     Softprodigy_Sociallogin
+ * @copyright   Copyright (c) 2015 Softprodigy System Solutions Pvt. Ltd (http://www.softprodigy.com)
+ * @license    http://www.opensource.org/licenses/gpl-license.php  GNU General Public License
+ */
+
+$currentUrl = Mage::helper('core/url')->getCurrentUrl();
+$block = new SoftProdigy_SocialLogin_Block_Button();
+if (Mage::getStoreConfig('softprodigy_sociallogin/general/showonloginpage') == 'inloginbox') {
+    $pos = strpos($currentUrl,'customer/account/login');
+    if($pos !== false) {
+        if ($this->checkEnable() == true):?>
+            <a onclick="showSoftprodigySocialPopup('<?php echo $this->_getButtonUrl(); ?>', <?php echo $this->getWidth(); ?>, <?php echo $this->getHeight(); ?>);">
+                <div class="<?php echo $this->getClass(); ?> softprodigy-icon-social"
+                     title="<?php echo $this->__('Connect with ') . $this->__($this->getTitle()); ?>"></div>
+            </a>
+        <?php endif;
+    } else {
+        if ($this->checkEnable() == true):?>
+            <button class="<?php echo $this->getClass(); ?> softprodigy-icon-social"
+                    title="<?php echo $this->__('Connect with ') . $this->__($this->getTitle()); ?>"
+                    onclick="showSoftprodigySocialPopup('<?php echo $this->_getButtonUrl(); ?>', <?php echo $this->getWidth(); ?>, <?php echo $this->getHeight(); ?>);"></button>
+        <?php endif;
+    }
+
+} else {
+    if ($this->checkEnable() == true):?>
+        <button class="<?php echo $this->getClass(); ?> softprodigy-icon-social"
+                title="<?php echo $this->__('Connect with ') . $this->__($this->getTitle()); ?>"
+                onclick="showSoftprodigySocialPopup('<?php echo $this->_getButtonUrl(); ?>', <?php echo $this->getWidth(); ?>, <?php echo $this->getHeight(); ?>);"></button>
+    <?php endif;
+}
+?>
+

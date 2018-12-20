@@ -1,0 +1,14 @@
+<?php $_product = $this->getProduct() ?>
+<div class="qvpricebox">
+	<?php if ($_product->isAvailable()): ?>
+	    <p class="availability in-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('In stock') ?></span></p>
+	<?php else: ?>
+	    <p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('Out of stock') ?></span></p>
+	<?php endif; ?>
+	<?php //echo $this->getChildHtml('product_type_data_extra') ?>
+	<div class="regular-price">
+		<span><?php echo $this->__('Price: ') ?></span>
+		<span class="price"><?php echo Mage::helper('core')->currency(number_format($_product->getPrice(),2)); ?></span>
+	</div>
+	<?php //echo $this->getPriceHtml($_product) ?>
+</div>

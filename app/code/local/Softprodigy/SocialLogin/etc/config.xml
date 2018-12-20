@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+/**
+ * Softprodigy System Solutions Pvt. Ltd
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.idealiagroup.com/magento-ext-license.html
+ *
+ * @category    Softprodigy
+ * @package     Softprodigy_Sociallogin
+ * @copyright   Copyright (c) 2015 Softprodigy System Solutions Pvt. Ltd (http://www.softprodigy.com)
+ * @license    http://www.opensource.org/licenses/gpl-license.php  GNU General Public License
+ */
+-->
+<config>
+    <modules>
+        <SoftProdigy_SocialLogin>
+            <version>1.0.0</version>
+        </SoftProdigy_SocialLogin>
+    </modules>
+
+    <global>
+        <blocks>
+            <softprodigy_sociallogin>
+                <class>SoftProdigy_SocialLogin_Block</class>
+            </softprodigy_sociallogin>
+        </blocks>
+
+        <helpers>
+            <softprodigy_sociallogin>
+                <class>SoftProdigy_SocialLogin_Helper</class>
+            </softprodigy_sociallogin>
+        </helpers>
+
+        <models>
+            <softprodigy_sociallogin>
+                <class>SoftProdigy_SocialLogin_Model</class>
+            </softprodigy_sociallogin>
+        </models>
+
+        <resources>
+            <sociallogin_setup>
+                <setup>
+                    <module>SoftProdigy_SocialLogin</module>
+                    <class>Mage_Customer_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </sociallogin_setup>
+            <softprodigy_sociallogin_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </softprodigy_sociallogin_write>
+            <softprodigy_sociallogin_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </softprodigy_sociallogin_read>
+        </resources>
+    </global>
+
+    <frontend>
+        <routers>
+            <softprodigy_sociallogin>
+                <use>standard</use>
+                <args>
+                    <module>SoftProdigy_SocialLogin</module>
+                    <frontName>softprodigy_sociallogin</frontName>
+                </args>
+            </softprodigy_sociallogin>
+        </routers>
+
+        <layout>
+            <updates>
+                <softprodigy_sociallogin>
+                    <file>softprodigy_sociallogin.xml</file>
+                </softprodigy_sociallogin>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <SoftProdigy_SocialLogin>
+                    <files>
+                        <default>SoftProdigy_SocialLogin.csv</default>
+                    </files>
+                </SoftProdigy_SocialLogin>
+            </modules>
+        </translate>
+    </frontend>
+
+    <default>
+        <softprodigy_sociallogin>
+            <general><showonloginpage>inloginbox</showonloginpage></general>
+            <general><showoncheckout>1</showoncheckout></general>
+            <facebook><enabled>0</enabled></facebook>
+            <google><enabled>0</enabled></google>
+            <twitter><enabled>0</enabled></twitter>
+            <linkedin><enabled>0</enabled></linkedin>
+            <yahoo><enabled>0</enabled></yahoo>
+        </softprodigy_sociallogin>
+    </default>
+
+</config>

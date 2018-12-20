@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Delhivery
+ * @category   Delhivery
+ * @package    Delhivery_Godam
+ * @copyright  Copyright (c) 2010-2011 Delhivery. (http://www.delhivery.com)
+ * @license    Creative Commons Licence (CCL)
+ * @purpose    Module configuration 
+ */
+ -->
+<config>
+    <modules>
+        <Delhivery_Godam>
+            <version>0.2.0</version>
+        </Delhivery_Godam>
+    </modules>
+    <frontend>
+        <routers>
+            <godam>
+                <use>standard</use>
+                <args>
+                    <module>Delhivery_Godam</module>
+                    <frontName>godam</frontName>
+                </args>
+            </godam>
+        </routers>
+        <layout>
+            <updates>
+                <godam>
+                    <file>delhiverygodam.xml</file>
+                </godam>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Delhivery_Godam>
+                    <files>
+                        <default>Delhivery_Godam.csv</default>
+                    </files>
+                </Delhivery_Godam>
+            </modules>
+        </translate>
+		<events>
+			<sales_order_place_after>
+                <observers>
+                    <godam_observer>
+                        <type>singleton</type>
+                        <class>godam/observer</class>
+                        <method>sales_order_place_after</method>
+                    </godam_observer>
+                </observers>
+            </sales_order_place_after>
+        </events>		
+    </frontend>
+     
+    <admin>
+        <routers>
+            <godam>
+                <use>admin</use>
+                <args>
+                    <module>Delhivery_Godam</module>
+                    <frontName>godam</frontName>
+                </args>
+            </godam>
+        </routers>
+    </admin>
+    
+    <adminhtml>
+        <menu>
+            <godam module="godam">
+                <title>Delhivery Godam</title>
+                <sort_order>75</sort_order>
+				
+				 <children>
+                <!-- child items go here -->
+                <godam translate="Delhivery Godam" module="godam">
+                    <title>Delhivery Godam</title>
+                    <sort_order>10</sort_order>
+                    <action>godam/adminhtml_godam</action>
+                </godam>
+				<inventorylog translate="Delhivery Inventory Update Log" module="godam">
+                    <title>Delhivery Inventory Update Log</title>
+                    <sort_order>20</sort_order>
+                    <action>godam/adminhtml_inventorylog</action>
+                </inventorylog>
+            </children>
+            </godam>
+			 
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <godam>
+                            <title>Delhivery Godam</title>
+                            <sort_order>11</sort_order>
+                        </godam>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <godam>
+                                            <title>Godam Settings</title>
+                                        </godam>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <godam>
+                    <file>delhiverygodam.xml</file>
+                </godam>
+            </updates>
+        </layout>
+		<events>
+		    <!--Event to track any order placement -->
+			<sales_order_place_after>
+				<observers>
+					<godam_observer>
+						<type>model</type>
+						<class>Delhivery_Godam_Model_Observer</class>
+						<method>sales_order_place_after</method>
+					</godam_observer>
+				</observers>
+			</sales_order_place_after>
+			<!--Event to track any order cancellation -->
+			<sales_order_item_cancel>
+				<observers>
+					<godam_observer>
+						<type>model</type>
+						<class>Delhivery_Godam_Model_Observer</class>
+						<method>sales_order_item_cancel</method>
+					</godam_observer>
+				</observers>
+			</sales_order_item_cancel>
+			<!--Event to track any new Invoice -->
+			<sales_order_invoice_save_after>
+				<observers>
+					<godam_observer>
+						<type>model</type>
+						<class>Delhivery_Godam_Model_Observer</class>
+						<method>salesOrderInvoiceSaveAfter</method>
+					</godam_observer>
+				</observers>
+			</sales_order_invoice_save_after>
+		</events>
+	</adminhtml>
+	<global>
+		<models>
+			<godam>
+				<class>Delhivery_Godam_Model</class>
+				<resourceModel>godam_mysql4</resourceModel>
+			</godam>
+			<godam_mysql4>
+				<class>Delhivery_Godam_Model_Mysql4</class>
+				<entities>
+					<godam>
+						<table>delhivery_godam</table>
+					</godam>
+					<inventorylog>
+						<table>delhivery_inventorylog</table>
+					</inventorylog>
+				</entities>
+			</godam_mysql4>
+		</models>
+		<blocks>
+			<godam>
+				<class>Delhivery_Godam_Block</class>
+			</godam>
+		</blocks>
+		<helpers>
+			<godam>
+				<class>Delhivery_Godam_Helper</class>
+			</godam>
+		</helpers>
+		<resources>
+			<godam_setup>
+				<setup>
+					<module>Delhivery_Godam</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</godam_setup>
+			<godam_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</godam_write>
+			<godam_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</godam_read>
+		</resources>
+	</global>
+</config>

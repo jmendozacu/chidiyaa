@@ -1,0 +1,22 @@
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ajaxsearch translate="title" module="ajaxsearch">
+                                        <title>Ajax Search</title>
+                                        <sort_order>50</sort_order>
+                                    </ajaxsearch>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

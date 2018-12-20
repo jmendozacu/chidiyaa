@@ -1,0 +1,63 @@
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td><h3 class="head-dashboard"><?php echo $this->__('Cache Dashboard') ?></h3></td>
+        </tr>
+    </table>
+</div>
+<div class="dashboard-container">
+    <table cellspacing="25" width="100%">
+        <col width="50%"/>
+        <col width="50%"/>
+        <tr>
+            <td>
+                <div class="entry-edit">
+                    <div class="entry-edit-head"><h4><?php echo $this->getCacheCountLabel() ?></h4></div>
+                    <fieldset class="a-center bold" style="font-size: 18px;"><?php echo $this->getCacheCountString(); ?></fieldset>
+                </div>
+                <div class="entry-edit">
+                    <div class="entry-edit-head"><h4><?php echo $this->__('Cache Benchmark') ?></h4></div>
+                    <fieldset class="np">
+                        <?php echo $this->getChildHtml('benchmark_grid'); ?>
+                        <div style="padding: 10px; background: #fdfdfd;">
+                            <?php if (!$this->canUseTags()): ?>
+                                <p style="color: #f00;"><?php echo $this->__(
+                                    "%s is not working. Please check your cache settings and make sure you have enabled %s option in %s section",
+                                    '<strong>getIdsMatchingTags</strong>',
+                                    '<strong>enable_two_levels</strong>',
+                                    '<strong>backend_options</strong>'
+                                ) ?>:</p>
+                                <pre>
+&lt;config&gt;
+    &lt;global&gt;
+        &lt;cache&gt;
+            ...
+            &lt;backend_options&gt;
+                &lt;enable_two_levels&gt;true&lt;/enable_two_levels&gt;
+            &lt;/backend_options&gt;
+            ...
+        &lt;/cache&gt;
+    &lt;/global&gt;
+&lt;/config&gt;
+                                </pre>
+                            <?php endif; ?>
+                            <p><?php echo $this->__("%s is used during the selective cache cleaning. This means that some visitors will get the slower page load time after they trigger cache invalidation (placed new order, added approved review or tag and so on). If this time is significant comparing to the page load time, we recommend to switch to the faster backend model.", '<strong>getIdsMatchingTags</strong>') ?></p>
+                            <p>For example:</p>
+                            <ul style="padding: 0 0 0 10px;">
+                                <li><a href="http://www.magentocommerce.com/knowledge-base/entry/redis-magento-ce-ee">Redis</a></li>
+                                <li><a href="http://magebase.com/magento-tutorials/speeding-up-magento-with-apc-or-memcached/">APC</a></li>
+                                <li><a href="http://blog.nexcess.net/2010/03/22/enabling-memcached-in-magento">Memcached</a></li>
+                                <li><a href="https://github.com/colinmollenhour/Cm_Cache_Backend_File#installation">Cm_Cache_Backend_File</a></li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                </div>
+            </td>
+            <td>
+                <div class="entry-edit chart-wrapper">
+                    <?php echo $this->getChildHtml('chart') ?>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

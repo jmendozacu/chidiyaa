@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <templates_master>
+            <label>Templates-master</label>
+            <sort_order>195</sort_order>
+        </templates_master>
+    </tabs>
+    <sections>
+        <tmcache translate="label" module="tmcache">
+            <label>Full Page Cache</label>
+            <tab>templates_master</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>659</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label" module="tmcache">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <automatic_clean translate="label">
+                            <label>Clean cache automatically, when data is updated</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </automatic_clean>
+                        <lifetime translate="label">
+                            <label>Lifetime Rules</label>
+                            <comment><![CDATA[Set 0 lifetime to make cache that will never expire.<br/><span style="color:#f00;">If you would like to disable caching for some page, use the 'Extra parameters' section instead.</span>]]></comment>
+                            <frontend_model>tmcache/adminhtml_system_config_form_field_lifetime</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lifetime>
+                    </fields>
+                </general>
+                <registry translate="label comment" module="tmcache">
+                    <label>Registry</label>
+                    <comment><![CDATA[Do not enable, if the store is working fine.<br/>Required to enable, when using dynamic blocks that does not works without registry variables.<br/> ]]></comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <product translate="label">
+                            <label>Product</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product>
+                        <category translate="label">
+                            <label>Category</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category>
+                    </fields>
+                </registry>
+                <extra translate="label" module="tmcache">
+                    <label>Extra parameters</label>
+                    <comment><![CDATA[Cache extension works with known Magento pages and blocks by default.<br/>Use this section to add support for third-party extension pages and blocks.]]></comment>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <heading_blocks translate="label">
+                            <label>Blocks</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_blocks>
+                        <dynamic_block_types translate="label">
+                            <label>Dynamic block types</label>
+                            <comment><![CDATA[One block per line is allowed. Example:<br/><code>catalog/product_compare_sidebar</code><br/><code>reports/product_viewed</code>]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dynamic_block_types>
+                        <dynamic_block_names translate="label">
+                            <label>Dynamic block names</label>
+                            <comment><![CDATA[One block per line is allowed. Example:<br/><code>top.links</code>]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dynamic_block_names>
+                        <heading_pages translate="label">
+                            <label>Pages</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>19</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_pages>
+                        <enabled_pages translate="label">
+                            <label>Cacheable pages</label>
+                            <comment><![CDATA[One page per line is allowed. Example:<br/><code>catalog/*/*</code><br/><code>tag/*/*</code>]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled_pages>
+                        <disabled_pages translate="label">
+                            <label>Non-cacheable pages</label>
+                            <comment><![CDATA[One page per line is allowed. Example:<br/><code>catalog/product_compare/index</code><br/><code>tag/customer/*</code>]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disabled_pages>
+                        <heading_url translate="label">
+                            <label>Url</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>39</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_url>
+                        <ignored_url_params translate="label">
+                            <label>Url parameters that will not used for cache key</label>
+                            <comment><![CDATA[One parameter per line is allowed. Example:<br/><code>___store</code><br/><code>uenc</code>]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ignored_url_params>
+                        <dynamic_request_params translate="label">
+                            <label>Request path part that will prevent page caching</label>
+                            <comment><![CDATA[One parameter per line is allowed. Example:<br/><code>/shopby/</code><br/><code>isAjax=1</code>]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>41</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dynamic_request_params>
+                        <heading_response translate="label">
+                            <label>Response</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>49</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_response>
+                        <dynamic_response_headers translate="label">
+                            <label>Page cache will be disabled, when one of the following headers was sent</label>
+                            <comment><![CDATA[One header per line is allowed. Example:<br/><code>Name|Value</code><br/><code>Http/1.1|404 Not Found</code><br/><code>Status|404 File not found</code>]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dynamic_response_headers>
+                        <heading_cookie translate="label">
+                            <label>Cookie</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>59</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_cookie>
+                        <cookies translate="label">
+                            <label>The name of cookies, that affects page output</label>
+                            <comment><![CDATA[One cookie name per line is allowed. Example:<br/><code>currency</code><br/><code>example_cookie|bool</code>]]></comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookies>
+                    </fields>
+                </extra>
+                <cron translate="label" module="tmcache">
+                    <label>Cron</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <old_cache_records_auto_remove translate="label">
+                            <label>Delete unused cache records automatically</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </old_cache_records_auto_remove>
+                        <old_cache_records_days translate="label">
+                            <label>Delete records created more than X days</label>
+                            <comment><![CDATA[Automatic cleaner will remove the cache records with zero hits only. To delete more specific records, use the Templates-Master > Full Page Cache > Cache Usage page]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <depends>
+                                <old_cache_records_auto_remove>1</old_cache_records_auto_remove>
+                            </depends>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </old_cache_records_days>
+                    </fields>
+                </cron>
+            </groups>
+        </tmcache>
+    </sections>
+</config>

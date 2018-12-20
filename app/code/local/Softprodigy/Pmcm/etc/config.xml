@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softprodigy System Solutions Pvt. Ltd
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.idealiagroup.com/magento-ext-license.html
+ *
+ * @category    Softprodigy
+ * @package     Softprodigy_Pmcm
+ * @copyright   Copyright (c) 2015 Softprodigy System Solutions Pvt. Ltd (http://www.softprodigy.com)
+ * @license    http://www.opensource.org/licenses/gpl-license.php  GNU General Public License
+ */
+-->
+<config>
+    <modules>
+        <Softprodigy_Pmcm>
+            <version>1.0.1</version>
+        </Softprodigy_Pmcm>
+    </modules>
+    <global>
+        <models>
+            <softprodigy_pmcm>
+                <class>Softprodigy_Pmcm_Model</class>
+            </softprodigy_pmcm>
+            <paypal>
+                <rewrite>
+                    <cart>Softprodigy_Pmcm_Model_Cart</cart>
+                    <standard>Softprodigy_Pmcm_Model_Standard</standard>
+                    <express>Softprodigy_Pmcm_Model_Express</express>
+                     <express_checkout>Softprodigy_Pmcm_Model_Express_Checkout</express_checkout>
+                    <config>Softprodigy_Pmcm_Model_Config</config>
+                    <api_nvp>Softprodigy_Pmcm_Model_Api_Nvp</api_nvp>
+                </rewrite>
+            </paypal>
+            <sales>
+                <rewrite>
+                    <order_payment>Softprodigy_Pmcm_Model_Payment</order_payment>
+                </rewrite>
+            </sales>
+        </models>
+        <blocks>
+            <pmcm>
+                <class>Softprodigy_Pmcm_Block</class>
+            </pmcm>
+            <checkout>
+                <rewrite>
+                    <cart_totals>Softprodigy_Pmcm_Block_Checkout_Cart_Totals</cart_totals>
+                </rewrite>
+            </checkout>
+        </blocks>
+        <helpers>
+            <pmcm>
+                <class>Softprodigy_Pmcm_Helper</class>
+            </pmcm>
+        </helpers>
+        <resources>
+            <pmcm_setup>
+                <setup>
+                    <module>Softprodigy_Pmcm</module>
+                </setup>
+            </pmcm_setup>
+        </resources>
+        <events>
+            <sales_order_save_after>
+                <observers>
+                    <pbfix_sales_order_observer_payment>
+                        <class>Softprodigy_Pmcm_Model_Observer</class>
+                        <method>setPaymentInfo</method>
+                    </pbfix_sales_order_observer_payment>
+                </observers>
+            </sales_order_save_after>
+        </events>
+    </global>
+    <frontend>
+    <routers>
+      <paypal>
+        <args>
+          <modules>
+            <paypal_express before="Mage_Paypal">Softprodigy_Pmcm</paypal_express>
+          </modules>
+        </args>
+      </paypal>
+    </routers>
+  </frontend>
+    <adminhtml>
+        <events>
+            <payment_info_block_prepare_specific_information>
+                <observers>
+                    <pmcm_payment_info>
+                        <class>Softprodigy_Pmcm_Model_Observer</class>
+                        <method>getPaymentInfo</method>
+                    </pmcm_payment_info>
+                </observers>
+            </payment_info_block_prepare_specific_information>
+            <adminhtml_init_system_config>
+                <observers>
+                    <pmcm>
+                        <class>Softprodigy_Pmcm_Model_Observer</class>
+                        <method>setConfig</method>
+                    </pmcm>
+                </observers>
+            </adminhtml_init_system_config>
+
+        </events>
+    </adminhtml>
+</config>

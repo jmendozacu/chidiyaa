@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_tmcache_dashboard_index>
+        <reference name="head">
+            <action method="addJs"><script>tm/adminhtml/cache/Chart.js</script></action>
+            <action method="addJs"><script>tm/adminhtml/cache/script.js</script></action>
+            <action method="addItem"><type>js_css</type><name>tm/adminhtml/cache/styles.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="tmcache/adminhtml_dashboard" name="dashboard" template="tm/cache/dashboard.phtml">
+                <block type="tmcache/adminhtml_dashboard_benchmark" name="benchmark_grid"/>
+                <block type="tmcache/adminhtml_dashboard_chart" name="chart" template="tm/cache/dashboard/chart.phtml"/>
+            </block>
+        </reference>
+    </adminhtml_tmcache_dashboard_index>
+
+    <adminhtml_tmcache_log_index>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>tm/adminhtml/cache/styles.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="tmcache/adminhtml_log" name="tmcache_log"/>
+        </reference>
+    </adminhtml_tmcache_log_index>
+
+    <adminhtml_tmcache_log_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="tmcache/adminhtml_log_grid" name="tmcache_log_grid"/>
+        </block>
+    </adminhtml_tmcache_log_grid>
+
+    <adminhtml_tmcache_usage_index>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>tm/adminhtml/cache/styles.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="tmcache/adminhtml_usage" name="tmcache_usage"/>
+        </reference>
+    </adminhtml_tmcache_usage_index>
+
+    <adminhtml_tmcache_usage_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="tmcache/adminhtml_usage_grid" name="tmcache_usage_grid"/>
+        </block>
+    </adminhtml_tmcache_usage_grid>
+</layout>

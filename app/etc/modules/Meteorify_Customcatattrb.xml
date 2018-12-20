@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Meteorify_Customcatattrb>
+      <active>true</active>
+      <codePool>local</codePool>
+    </Meteorify_Customcatattrb>
+  </modules>
+</config>

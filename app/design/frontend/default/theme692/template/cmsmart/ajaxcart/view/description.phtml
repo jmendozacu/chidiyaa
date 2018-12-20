@@ -1,0 +1,9 @@
+<?php
+    $_product = Mage::registry('product');
+    $_helper = Mage::helper('catalog/output'); 
+	$qvCf = Mage::getStoreConfig('quickview');
+?>
+<div class="short-description">
+	<h2><?php echo $this->__('Description') ?></h2>
+	<div class="std"><?php echo $_product->getDescription(); ?></div>
+</div>

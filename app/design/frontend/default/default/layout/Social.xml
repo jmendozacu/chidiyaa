@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+   <default>
+	 <reference name="right">
+		<block type="core/template" name="facebook_meta" before="-">
+			<action method="setTemplate" ifconfig="facebooklb/general/enabled">
+				<template>social/fb.phtml</template>
+			</action>
+		</block>
+		<block type="core/template" name="twitter_meta" after="facebook_meta">
+			<action method="setTemplate" ifconfig="twitterlb/general/enabled">
+				<template>social/twitter.phtml</template>
+			</action>
+		</block>
+	 </reference>
+ </default>
+</layout>
+

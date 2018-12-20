@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+This file - is a partial copy of local.xml.additional.
+
+Rename this file to tmcache.xml, if you would like to change the cache backend
+for full page cache only. Otherwise - use local.xml file instead.
+-->
+<config>
+    <global>
+        <tmcache>
+            <!-- Custom backend model -->
+            <backend></backend><!-- apc / memcached / xcache / File -->
+            <backend_options>
+                <cache_dir>tmcache</cache_dir> <!-- File -->
+                <cache_db_complete_path>tmcache</cache_db_complete_path> <!-- sqlite -->
+                <connection></connection> <!-- Custom connection for db backend -->
+                <enable_two_levels>true</enable_two_levels> <!-- Enable two level cache -->
+            </backend_options>
+
+            <!-- Custom slow backend model -->
+            <slow_backend></slow_backend> <!-- database / File (default) - used for 2 levels cache setup, necessary for all shared memory storages -->
+            <slow_backend_store_data>1</slow_backend_store_data> <!-- 1 / 0 (default) - used for 2 levels cache setup, sets whether store data in db slow cache backend -->
+            <auto_refresh_fast_cache>0</auto_refresh_fast_cache> <!-- 1 / 0 (default) - used for 2 levels cache setup, sets whether refresh data in fast cache backend -->
+            <slow_backend_options>
+                <hashed_directory_level>1</hashed_directory_level>
+                <hashed_directory_umask>0777</hashed_directory_umask>
+                <file_name_prefix>tmcache</file_name_prefix>
+                <cache_dir>tmcache/slow</cache_dir>
+            </slow_backend_options>
+
+            <!-- memcached cache backend related config -->
+            <!--
+            <memcached>
+                <servers>
+                    <server>
+                        <host><![CDATA[]]></host>
+                        <port><![CDATA[]]></port>
+                        <persistent><![CDATA[]]></persistent>
+                        <weight><![CDATA[]]></weight>
+                        <timeout><![CDATA[]]></timeout>
+                        <retry_interval><![CDATA[]]></retry_interval>
+                        <status><![CDATA[]]></status>
+                    </server>
+                </servers>
+                <compression><![CDATA[0]]></compression>
+                <cache_dir><![CDATA[]]></cache_dir>
+                <hashed_directory_level><![CDATA[]]></hashed_directory_level>
+                <hashed_directory_umask><![CDATA[]]></hashed_directory_umask>
+                <file_name_prefix><![CDATA[]]></file_name_prefix>
+            </memcached>
+            -->
+
+            <!-- example of redis cache -->
+            <!--
+            <backend>Cm_Cache_Backend_Redis</backend>
+            <backend_options>
+                <server>127.0.0.1</server>
+                <port>6379</port>
+                <database>0</database>
+                <password></password>
+                <force_standalone>0</force_standalone>
+                <connect_retries>1</connect_retries>
+                <automatic_cleaning_factor>0</automatic_cleaning_factor>
+                <compress_data>1</compress_data>
+                <compress_tags>1</compress_tags>
+                <compress_threshold>20480</compress_threshold>
+                <compression_lib>gzip</compression_lib>
+                <persistent>1</persistent>
+            </backend_options>
+            -->
+        </tmcache>
+    </global>
+</config>

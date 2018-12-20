@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softprodigy System Solutions Pvt. Ltd
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.idealiagroup.com/magento-ext-license.html
+ *
+ * @category    Softprodigy
+ * @package     Softprodigy_Minimart
+ * @copyright   Copyright (c) 2015 Softprodigy System Solutions Pvt. Ltd (http://www.softprodigy.com)
+ * @license    http://www.opensource.org/licenses/gpl-license.php  GNU General Public License
+ */
+-->
+<config>
+	<tabs>
+        <softprodigy translate="label">
+            <label>SoftProdigy</label>
+            <sort_order>251</sort_order>
+        </softprodigy>
+    </tabs>
+    <sections>
+        <minimart translate="label" module="core">
+            <label>OnGoBuyo </label>
+            <tab>softprodigy</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+			
+            <groups>
+                <minimart_registration translate="label">
+                    <label>Note</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+					<comment><![CDATA[Dear Admin, This Interface controls the data to be shown in your Mobile App created using <a href="http://ongobuyo.com" target="_blank">ONGOBUYO</a>, For further queries reach us on <a href="mailto:ogb@softprodigy.com" target="_top">ogb@softprodigy.com</a> ]]></comment>
+                </minimart_registration>
+                <homepage_settings translate="label">
+                <label>Homepage Settings</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>4</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                    <fields>
+						<feat_enable translate="label">
+                            <label>Enable featured Product:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </feat_enable>
+                        <feat_cat translate="label, comment">
+                            <label>Featured Categories:</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>minimart/system_config_source_dropdown_cats</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </feat_cat>
+                    </fields>
+                </homepage_settings>
+                <static_pages>
+					<label>Static Pages</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>5</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<stat_page translate="label, comment">
+                            <label>Static Pages:</label>
+                            <comment><![CDATA[]]></comment>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>minimart/system_config_source_dropdown_staticpages</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </stat_page>
+					</fields>	
+                </static_pages>
+                <slider_settings translate="label">
+				<label>Homepage Slider Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>6</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+					<fields>
+						<enable translate="label, comment">
+							<label>Enable Homepage Slider:</label>
+							<comment><![CDATA[Show content slider on homepage]]></comment>
+							<frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable>
+						<slide_one_image translate="label, comment">
+							<label>Slide #1 Image:</label>
+							<comment><![CDATA[Image should be 320px wide by 160px high]]></comment>
+							<frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">softprodigy/slider</upload_dir>
+                            <base_url type="media" scope_info="1">softprodigy/slider</base_url>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_one_image>
+						<slide_two_image translate="label, comment">
+							<label>Slide #2 Image:</label>
+							<comment><![CDATA[Image should be 320px wide by 160px high]]></comment>
+							<frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">softprodigy/slider</upload_dir>
+                            <base_url type="media" scope_info="1">softprodigy/slider</base_url>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_two_image>
+						<slide_three_image translate="label, comment">
+							<label>Slide #3 Image:</label>
+							<comment><![CDATA[Image should be 320px wide by 160px high]]></comment>
+							<frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">softprodigy/slider</upload_dir>
+                            <base_url type="media" scope_info="1">softprodigy/slider</base_url>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</slide_three_image>
+					</fields>
+				</slider_settings>
+            </groups>
+        </minimart>
+    </sections>
+</config>

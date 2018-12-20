@@ -1,0 +1,25 @@
+<!--
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <quickview translate="title" module="cmsmquickview">
+                                        <title>Quick View Settings</title>
+                                        <sort_order>50</sort_order>
+                                    </quickview>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
+
+-->

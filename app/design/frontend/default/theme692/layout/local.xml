@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customer_account>
+    <reference name="customer_account_navigation">
+        <action method="removeLinkByName"><name>recurring_profiles</name></action>
+        <action method="removeLinkByName"><name>billing_agreements</name></action>
+        <action method="removeLinkByName"><name>tags</name></action>
+        <action method="removeLinkByName"><name>wishlist</name></action>
+		<action method="removeLinkByName"><name>OAuth Customer Tokens</name></action>
+        <action method="removeLinkByName"><name>downloadable_products</name></action>
+    </reference>
+</customer_account>
+<layout version="0.1.0">
+    <default>
+        <reference name="header">
+            <block type="directory/currency" name="custom_currency_selector" template="currency/currency.phtml"/>
+        </reference>
+        <remove name="currency" />
+    </default>
+</layout>

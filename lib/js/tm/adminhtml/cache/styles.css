@@ -1,0 +1,46 @@
+.chart-wrapper {
+    border:1px solid #ccc;
+    padding: 15px;
+}
+.chart-toolbar {
+    padding: 10px;
+}
+.chart-toolbar h3 {
+    display: inline-block;
+    margin-right: 10px;
+}
+#legend {
+    display: inline-block;
+}
+.line-legend li {
+    position: relative;
+    padding-left: 20px;
+    display: inline-block;
+    margin-right: 7px;
+}
+.line-legend li span {
+    border-radius: 3px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 17px;
+    height: 17px;
+}
+.chart-toolbar .settings {
+    float: right;
+}
+.chart-toolbar .settings select {
+    width: 150px;
+}
+.word-break {
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+.divider-hr hr {
+    border: 0;
+    color: #c6c6c6;
+    background-color: #c6c6c6;
+    height: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+}

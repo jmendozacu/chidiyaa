@@ -1,0 +1,29 @@
+<?php
+    $_product = Mage::registry('product');
+    $_helper = Mage::helper('catalog/output'); 
+	$qvCf = Mage::getStoreConfig('quickview');
+?>
+<div class="quickview_additional">
+	<h2><?php echo $this->__('Additional') ?></h2>
+	<table class="data-table">
+		<colgroup><col width="25%"/><col/></colgroup>
+		<tbody>
+			<tr class="first odd">
+				<th class="label"><?php echo $this->__('Model') ?></th>
+				<td class="data last"><?php echo $_product->getModel(); ?></td>
+			</tr>
+			<tr class="even">
+				<th class="label"><?php echo $this->__('In Depth') ?></th>
+				<td class="data last"><?php echo $_product->getInDepth(); ?></td>
+			</tr>
+			<tr class="odd">
+				<th class="label"><?php echo $this->__('Dimensions') ?></th>
+				<td class="data last"><?php echo $_product->getDimensions(); ?></td>
+			</tr>
+			<tr class="last even">
+				<th class="label"><?php echo $this->__('Activation Information') ?></th>
+				<td class="data last"><?php echo $_product->getActivationInformation(); ?></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<config>
+	<extendware>
+		<quickaccess>
+			<ewbotblocker>
+                <resource>extendware/ewbotblocker</resource>
+				<children>
+					<bot translate="title" module="ewbotblocker">
+						<title>Bots</title>
+						<action>adminhtml/ewbotblocker_bot</action>
+						<resource>extendware/ewbotblocker/bot</resource>
+						<sort_order>1</sort_order>
+					</bot>
+				</children>
+				<title/>
+			</ewbotblocker>
+		</quickaccess>
+	</extendware>
+	<menu>
+	    <ewcore translate="title" module="ewbotblocker">
+			<title>Extendware</title>
+			<sort_order>89</sort_order>
+			<resource>extendware/ewcore</resource>
+			<class>ewcore-main</class>
+	        <children>
+	            <quickaccess translate="title" module="ewbotblocker">
+	                <title>Manage Extensions</title>
+	                <sort_order>1</sort_order>
+	                <resource>extendware/ewbotblocker</resource>
+	                <children>
+	                	<ewbotblocker translate="title" module="ewbotblocker">
+			                <title>Bot Blocker</title>
+			                <sort_order>38752</sort_order>
+			                <resource>extendware/ewbotblocker</resource>
+			                <children>
+			                	<bot translate="title" module="ewbotblocker">
+									<title>Bots</title>
+									<action>adminhtml/ewbotblocker_bot</action>
+									<resource>extendware/ewbotblocker/bot</resource>
+									<sort_order>1</sort_order>
+								</bot>
+								<configure translate="title" module="ewbotblocker">
+									<title>Configure</title>
+									<sort_order>9999999</sort_order>
+									<action>adminhtml/ewbotblocker_config/index</action>
+									<resource>extendware/ewbotblocker/configure</resource>
+								</configure>
+			                </children>
+			            </ewbotblocker>
+	                </children>
+	            </quickaccess>
+	            <userguides translate="title" module="ewbotblocker">
+	                <title>User Guides / Help</title>
+	                <sort_order>9</sort_order>
+	                <action>adminhtml/ewbotblocker_config/gotoExtendwareUserguides</action>
+	                <resource>extendware/ewcore/redirect/userguide</resource>
+	                <class>ewcore-extendware-userguide</class>
+	            </userguides>
+	            <storelink translate="title" module="ewbotblocker">
+		            <title>Improve Your Store</title>
+		            <sort_order>9999</sort_order>
+		            <action>adminhtml/ewbotblocker_config/gotoExtendware</action>
+		            <resource>extendware/ewcore/redirect/extendware</resource>
+		            <class>ewcore-extendware-link</class>
+		        </storelink>
+	        </children>
+	    </ewcore>
+	</menu>
+	<acl>
+		<resources>
+            <admin>
+                <children>
+                    <extendware translate="title" module="ewbotblocker">
+                    	<title>Extendware</title>
+                    	<sort_order>0</sort_order>
+                        <children>
+                        	<ewbotblocker translate="title" module="ewbotblocker">
+                        		<title>Bot Blocker</title>
+                        		<children>
+                        			<bot translate="title">
+                        				<title>Bots</title>
+			            			</bot>
+                        			<settings translate="title">
+                        				<title>Settings</title>
+                        				<children>
+				                            <main translate="title">
+				                                <title>Main</title>
+				                                <children>
+					                                <ewbotblocker translate="title">
+						                                <title>General</title>
+						                            </ewbotblocker>
+					                            </children>
+				                            </main>
+			                            </children>
+			            			</settings>
+			            		</children>
+			            	</ewbotblocker>
+                        </children>
+                    </extendware>
+                </children>
+            </admin>
+        </resources>
+	</acl>
+</config>

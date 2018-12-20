@@ -1,0 +1,66 @@
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+   
+	$qvCf = Mage::getStoreConfig('quickview');
+	
+	$pWidth  = (int) @$qvCf['imagesetting']['thumbnail_image_width'];	
+	$pHeight  = (int) @$qvCf['imagesetting']['thumbnail_image_height'];
+	$imgWidth  = (int) @$qvCf['imagesetting']['product_image_width'];	
+	$imgHeight  = (int) @$qvCf['imagesetting']['product_image_height'];
+	$enablezoom  = (int) @$qvCf['imagesetting']['enablezoom'];
+?>
+<?php //echo $this->getSkinUrl('lastpath'); ?>
+
+<div id="product_img_slider">
+	<?php 
+		$imgclass = '';
+		$thumbnail_img = '';
+	?>
+	<?php if ($_product->getImage() != 'no_selection' && $_product->getImage()){ ?>
+
+	<div class="slides_container">
+	<?php if (count($this->getGalleryImages()) > 0){ ?>
+		<?php 
+			foreach ($this->getGalleryImages() as $_image){ 
+
+			
+			$imgsrc = $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($imgWidth,$imgHeight);
+			$imgsrc2 = $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(600);
+			//$imgsrc = $this->helper('catalog/image')->init($_product, 'image')->resize($imgWidth,$imgHeight);
+			$imglb = $this->htmlEscape($_image->getLabel());
+			if(!$imgclass){
+		?>
+				<img id="showlargeimg" class="showlargeimg" class="<?php echo $imgclass; ?>" src="<?php echo $imgsrc; ?>" width="<?php echo $imgWidth ?>" height="<?php echo $imgHeight ?>" alt="<?php echo $imglb; ?>"  data-zoom-image="<?php echo $imgsrc2; ?>"  /> 
+			
+		<?php 
+			}
+			
+			$thumbnail_img .= '<li width="'.($pWidth).'" height="'.($pHeight).'"  ><img  data-zoom-image="'.$imgsrc2.'" class="p_image_hover" src="'.$imgsrc.'" width="'.$pWidth.'" height="'.$pHeight.'" alt="'.$imglb.'" /></li>';
+		?>		
+		<?php $imgclass = "imghidden"; ?>		
+		<?php } ?>
+	
+
+	<?php }else{ ?>			
+		<?php
+			$_img = '<img id="showlargeimg" width="'.$imgWidth.'" height="'.$imgHeight.'"  data-zoom-image="'.$this->helper('catalog/image')->init($_product, 'image')->resize(600).'" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($imgWidth,$imgHeight).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+			//echo $_helper->productAttribute($_product, $_img, 'image');
+			echo $_img;
+		?>
+		
+	<?php } ?>	
+	<?php } ?>
+	
+	</div>
+	
+	<?php 
+		if (count($this->getGalleryImages()) > 0){ ?>
+		<div class="thumbnail_pagination">
+			<ul  id="mycarousel" class="jcarousel-skin-tango">
+				<?php echo $thumbnail_img; ?>
+			</ul>
+		</div>
+	<?php } ?>
+</div>
+

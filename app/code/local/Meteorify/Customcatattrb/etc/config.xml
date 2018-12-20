@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Meteorify_Customcatattrb>
+      <version>0.0.1</version>
+    </Meteorify_Customcatattrb>
+  </modules>
+    <global>
+      <resources>
+          <customcatattrb_setup>
+            <setup>
+              <module>Meteorify_Customcatattrb</module>
+              <class>Mage_Eav_Model_Entity_Setup</class>
+            </setup>
+            <connection>
+              <use>default_setup</use>
+            </connection>
+          </customcatattrb_setup>
+      </resources>
+    </global>
+</config>

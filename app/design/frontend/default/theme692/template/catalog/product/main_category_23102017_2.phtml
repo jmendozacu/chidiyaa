@@ -1,0 +1,48 @@
+<?php
+$categories = Mage::getModel('catalog/category')->getCollection()
+    ->addAttributeToSelect('*')
+    ->setOrder('thumbnail_home', 'ASC');//or you can just add some attributes
+   // ->addAttributeToFilter('level', 2)//2 is actually the first level
+    //->addAttributeToFilter('is_active', 1)//if you want only active categories
+;
+?>
+<div class="page-title category-title center">
+            <h1>OUR FEATURED COLLECTION</h1>
+    </div>
+<div class="clear"></div>
+<ul class="row-cat grid-clol-6 home-row-cat">
+<?php foreach($categories as $category): ?>
+<?php //echo $category->getThumbnailHome() ?>
+<?php if($category->getShowCatimage()==1): ?>
+	<li class="col-item3">
+
+	<a href="<?php echo $category->getCategoryIdUrl(); ?>">
+			<img  src="<?php echo $category->getThumbnailImageUrl(); ?>"/>
+			<div class="content-center">
+				<div class="row-title"><?php echo $category->getName(); ?></div>
+				<div class="row-button"><button class ="row-inner" >Shop</button></div>
+			</div>
+		</a>
+	</li>
+<?php endif; ?>
+<?php endforeach;?>
+</ul>
+
+
+<?php foreach ($this->getStoreCategories() as $_category): ?>
+<?php $open = $this->isCategoryActive($_category); ?>
+<?php
+$cur_category=Mage::getModel('catalog/category')->load($_category->getId());
+$layer = Mage::getSingleton('catalog/layer');
+$layer->setCurrentCategory($cur_category);
+if ($immagine = $this->getCurrentCategory()->getImageUrl()):
+?>
+<div class="catalog-image">
+    <div class="col-sm-4">
+        <a href="<?php echo $this->getCategoryUrl($_category)?>">
+        <img src="<?php echo $immagine ?>" alt="<?php echo $this->htmlEscape($this->getCurrentCategory()->getName()) ?>" class="img-responsive" />
+        </a>
+    </div>
+</div>
+<?php endif; ?>
+<?php endforeach; ?>

@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+        <Extendware_EWBotBlocker>
+        	<extendware>
+	        	<settings>
+	        		<scopes>
+		        		<main>
+							<tabs>
+						        <main translate="label comment ewhelp" module="ewbotblocker">
+						            <label>Bot Blocker</label>
+						            <sort_order>100</sort_order>
+						        </main>
+						    </tabs>
+							<sections>
+								<ewbotblocker translate="label comment ewhelp" module="ewbotblocker">
+									<class>separator-top</class>
+									<label>General</label>
+									<tab>main</tab>
+									<frontend_type>text</frontend_type>
+									<sort_order>100</sort_order>
+									<show_in_default>1</show_in_default>
+									<show_in_website>1</show_in_website>
+									<show_in_store>1</show_in_store>
+									<groups>
+										<general translate="label comment ewhelp" module="ewbotblocker">
+						                    <label>General</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>10</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+												<enabled translate="label comment ewhelp">
+						                            <label>Status</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[If disabled, then no bot blocking will be performed.]]></comment>
+						                        </enabled>
+						                        <default_status translate="label comment ewhelp">
+						                            <label>Default Status</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewbotblocker/adminhtml_config_data_option_defaultstatus</source_model>
+						                            <sort_order>2</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[The status of a newly added bot. Set to "pending" if you want to manually verify them before blocking them.]]></comment>
+						                        </default_status>
+						                        <honeypot_form_enabled translate="label comment ewhelp">
+						                            <label>Honeypot Form</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><enabled>1</enabled></depends>
+						                            <comment><![CDATA[If enabled, then an invisible form will be added to the site. If a bot auto-submits this form, then it will be identified and banned.]]></comment>
+						                        </honeypot_form_enabled>
+						                        <honeypot_link_enabled translate="label comment ewhelp">
+						                            <label>Honeypot Link</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><enabled>1</enabled></depends>
+						                            <comment><![CDATA[If enabled, then an invisible link with the "nofollow" attribute set. If a bad bot follows it then it will be banned. Some good bots sometimes follow this so if you enable ensure that you have set "/ewbb/" in your robots.txt file to reduce this chance. Ensure "Only Post" option in Advanced section is set to disabled.]]></comment>
+						                        </honeypot_link_enabled>
+						                        <form_protection_enabled translate="label comment ewhelp">
+						                            <label>Form Protection</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><enabled>1</enabled></depends>
+						                            <comment><![CDATA[If enabled, then the "action" attribute of forms will be removed and added back with Javascript. This tricks bots as many will not know how to submit the form.]]></comment>
+						                        </form_protection_enabled>
+						                        <form_protection_honeypotted_urls_enabled translate="label comment ewhelp">
+						                            <label>Form Protection Honeypotted Urls</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <depends><enabled>1</enabled><form_protection_enabled>1</form_protection_enabled></depends>
+						                            <comment><![CDATA[If enabled, then the "action" attribute will be rewritten to a url that if it receives traffic the bot will be banned. Normal browsers with javascript will use the correct action url so users will not be affected. <b>Note: </b>Test each form after enabling and add any incompatible forms to the "Form Protection Excluded Forms" list.]]></comment>
+						                        </form_protection_honeypotted_urls_enabled>
+											</fields>
+										</general>
+										<advanced translate="label comment ewhelp" module="ewbotblocker">
+						                    <label>Advanced</label>
+						                    <frontend_type>text</frontend_type>
+						                    <sort_order>20</sort_order>
+						                    <show_in_default>1</show_in_default>
+						                    <show_in_website>1</show_in_website>
+						                    <show_in_store>1</show_in_store>
+						                    <fields>
+						                    	<honeypot_paths translate="label comment ewhelp">
+						                            <label>Honeypot Paths RegExp</label>
+						                           <frontend_model>ewbotblocker/adminhtml_config_form_field_honeypotpaths</frontend_model>
+                            						<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+						                            <sort_order>3</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                   			<show_in_store>0</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_serialized_array</model>
+						                            		<options>
+						                            			<splittable_min_items>1</splittable_min_items>
+						                            			<splittable_max_items>1</splittable_max_items>
+						                            			<splittable_item_types>string</splittable_item_types>
+						                            			<splittable_item_min_length>1</splittable_item_min_length>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <comment><![CDATA[Some bots randomly try urls such as "wp-login.php" to try to identify your stores platform. You can add any such urls like this to auto-block anyone that visits them. <b>Note: </b> only 404 / invalid requests are checked]]></comment>
+						                        	<ewhelp><![CDATA[]]></ewhelp>
+						                        </honeypot_paths>
+						                    	<ip_mode translate="label comment ewhelp">
+						                            <label>IP Mode</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewbotblocker/adminhtml_config_data_option_ipmode</source_model>
+						                            <sort_order>1</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <comment><![CDATA[<b>Note: </b> if your store is behind a load balance use should use the forwarded mode.]]></comment>
+						                        </ip_mode>
+						                    	<path_prefix translate="label comment ewhelp">
+						                            <label>Path Prefix</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>10</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <validate>required-entry</validate>
+						                            <comment><![CDATA[This will be prepended to honey pot urls. You should also add this to your robots.txt file to ensure good bots never got to the url. This is important if you enabled "honeypot links".]]></comment>
+						                        </path_prefix>
+						                        <only_post_enabled translate="label comment ewhelp">
+						                            <label>Only Post</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>11</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <validate>required-entry</validate>
+						                            <comment><![CDATA[If enabled the bot will only be rejected if they send a POST request on a honey-potted url. With this enabled honey-potted links using "nofollow" attribute will not be outputted. Also, honey-potted form protection urls will only be placed on forms with a method of POST.]]></comment>
+						                        </only_post_enabled>
+						                        <verification_cookie_enabled translate="label comment ewhelp">
+						                            <label>Verification Cookie</label>
+						                            <frontend_type>select</frontend_type>
+						                            <source_model>ewcore/adminhtml_config_data_option_enabledisable</source_model>
+						                            <sort_order>12</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <validate>required-entry</validate>
+						                            <comment><![CDATA[If enabled the session will only check if it is a bot once per session.]]></comment>
+						                        </verification_cookie_enabled>
+						                        <days_to_expiry translate="label comment ewhelp">
+						                            <label>Ban Length (days)</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>20</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_double</model>
+						                            		<options>
+						                            			<min_value>1</min_value>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <validate>required-entry validate-zero-or-greater</validate>
+						                            <comment><![CDATA[The maximum length of time in days that a ban of a bot will be in effect.]]></comment>
+						                        </days_to_expiry>
+						                        <excluded_form_ids translate="label comment ewhelp">
+						                            <label>Form Protection Excluded Forms</label>
+						                            <frontend_model>ewbotblocker/adminhtml_config_form_field_formid</frontend_model>
+                            						<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+						                            <sort_order>30</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_serialized_array</model>
+						                            		<options>
+						                            			<splittable_min_items>1</splittable_min_items>
+						                            			<splittable_max_items>1</splittable_max_items>
+						                            			<splittable_item_types>string</splittable_item_types>
+						                            			<splittable_item_min_length>1</splittable_item_min_length>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <comment><![CDATA[Input a form ID of a form if you want it to be ignored by the form protection.]]></comment>
+						                        </excluded_form_ids>
+						                        <url_filters translate="label comment ewhelp">
+						                            <label>Uri Filter RegExps</label>
+						                            <frontend_model>ewbotblocker/adminhtml_config_form_field_urlfilters</frontend_model>
+                            						<backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+						                            <sort_order>35</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>0</show_in_website>
+						                            <show_in_store>0</show_in_store>
+						                            <validators>
+						                            	<validator>
+						                            		<model>ewcore/data_validator_serialized_array</model>
+						                            		<options>
+						                            			<splittable_min_items>1</splittable_min_items>
+						                            			<splittable_max_items>1</splittable_max_items>
+						                            			<splittable_item_types>regexp</splittable_item_types>
+						                            			<splittable_item_min_length>1</splittable_item_min_length>
+						                            		</options>
+						                            	</validator>
+						                            </validators>
+						                            <comment><![CDATA[This will disable bot blocker on certain pages. Mostly useful for ensuring admin pages do not use it when testing.]]></comment>
+							                    </url_filters>
+						                        <salt translate="label comment ewhelp">
+						                            <label>Salt</label>
+						                            <frontend_type>text</frontend_type>
+						                            <sort_order>40</sort_order>
+						                            <show_in_default>1</show_in_default>
+						                            <show_in_website>1</show_in_website>
+						                            <show_in_store>1</show_in_store>
+						                            <comment><![CDATA[Changing this will change your honeypot urls. It is useful to change this if you want to invalidate old urls due to change in settings or something similar.]]></comment>
+						                        </salt>
+											</fields>
+										</advanced>
+									</groups>
+								</ewbotblocker>
+							</sections>
+						</main>
+					</scopes>
+				</settings>
+			</extendware>
+		</Extendware_EWBotBlocker>
+	</modules>
+</config>

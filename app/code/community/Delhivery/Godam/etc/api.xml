@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--<config>
+    <api>
+        <resources>
+            <godam translate="title" module="delhivery_godam">
+            	<title>Godam Update</title>
+            	<model>godam/api_api</model>
+            	<methods>
+                	<receiveUpdate translate="title" module="delhivery_godam">
+                    	<title>Get Godam Update</title>
+                	</receiveUpdate>
+            	</methods>
+            </godam>
+        </resources>
+        <resources_alias>
+            <resourcename>godam</resourcename>
+        </resources_alias>
+        <v2>
+            <resources_function_prefix>
+                <resourcename>resourceName</resourcename>
+            </resources_function_prefix>
+        </v2>		
+    </api>
+</config>-->
+<config>
+    <api>
+        <resources>
+            <godam translate="title" module="delhivery_godam">
+				<title>Godam Update</title>
+				<model>godam/objectmodel_api</model>
+				<methods>
+					<receiveUpdate translate="title" module="delhivery_godam">
+						<title>Get Godam Update</title>
+						<method>receiveUpdate</method>
+					</receiveUpdate>
+					<inventoryUpdate translate="title" module="delhivery_godam">
+						<title>Get Inventory Update</title>
+						<method>inventoryUpdate</method>
+					</inventoryUpdate>
+				</methods>
+            </godam>
+        </resources>
+		
+        <resources_alias>
+            <!--<resourcename>godam</resourcename>-->
+        </resources_alias>
+        <v2>
+            <resources_function_prefix>
+                <godam>godam</godam>
+            </resources_function_prefix>
+        </v2>
+    </api>
+</config>

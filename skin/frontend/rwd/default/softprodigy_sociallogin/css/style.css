@@ -1,0 +1,15 @@
+
+.softprodigy-socialconnect-social{margin-top: 10px;}
+div.softprodigy-socialconnect-social .col3-set .col-3 {width: 100%;}
+div.softprodigy-socialconnect-social .col3-set .col-3 .content {min-height: 100px;border: 1px solid #bbb6a5; margin: 10px 0;}
+div.softprodigy-socialconnect-social .col3-set .col-3 .content .softprodigy-social-button-login{;margin: 0 auto;width: 220px;padding: 10px 0;}
+/*.softprodigy-social-button-login{text-align: center;}*/
+.softprodigy-socialconnect-social .ico-fb{background: url('../images/facebook_icon.png') !important; background-repeat:no-repeat; width: 30px !important; height: 30px !important; padding: 0; border: none;}
+.softprodigy-socialconnect-social .ico-go{background: url('../images/google_plus_icon.png') !important; background-repeat:no-repeat; width: 30px !important; height: 30px !important; padding: 0; border: none;}
+.softprodigy-socialconnect-social .ico-tw{background: url('../images/twitter_icon.png') !important; background-repeat:no-repeat; width: 30px !important; height: 30px !important; padding: 0; border: none;}
+.softprodigy-socialconnect-social .ico-li{background: url('../images/linkdin_icon.png') !important; background-repeat:no-repeat; width: 30px !important; height: 30px !important; padding: 0; border: none;}
+.softprodigy-socialconnect-social .ico-yh{background: url('../images/yahoo_icon.png') !important; background-repeat:no-repeat; width: 30px !important; height: 30px !important; padding: 0; border: none;}
+.softprodigy-social-button-login .softprodigy-icon-social{ margin-right: 5px; cursor: pointer; }
+.button-set{border-top: 1px solid #efefef}
+.button-bum{float: right; width: 100%;}
+.social-button{text-align: center;margin-top: 10px;}

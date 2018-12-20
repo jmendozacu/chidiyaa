@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <templates_master>
+            <title>Templates Master</title>
+            <sort_order>71</sort_order>
+            <children>
+                <tmcache>
+                    <children>
+                        <crawler translate="title" module="tmcrawler">
+                            <title>Crawler</title>
+                            <sort_order>5</sort_order>
+                            <children>
+                                <crawler>
+                                    <title>Manage Crawlers</title>
+                                    <sort_order>10</sort_order>
+                                    <action>adminhtml/tmcrawler_crawler/index</action>
+                                </crawler>
+                                <log>
+                                    <title>Log</title>
+                                    <sort_order>20</sort_order>
+                                    <action>adminhtml/tmcrawler_log/index</action>
+                                </log>
+                                <report>
+                                    <title>Reports</title>
+                                    <sort_order>30</sort_order>
+                                    <action>adminhtml/tmcrawler_report/index</action>
+                                </report>
+                            </children>
+                        </crawler>
+                    </children>
+                </tmcache>
+            </children>
+        </templates_master>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <templates_master>
+                        <title>Templates Master</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <tmcache>
+                                <children>
+                                    <crawler translate="title" module="tmcrawler">
+                                        <title>Crawler</title>
+                                        <sort_order>5</sort_order>
+                                        <children>
+                                            <crawler>
+                                                <title>Manage Crawlers</title>
+                                                <sort_order>10</sort_order>
+                                                <children>
+                                                    <save>
+                                                        <title>Save</title>
+                                                        <sort_order>0</sort_order>
+                                                    </save>
+                                                    <delete>
+                                                        <title>Delete</title>
+                                                        <sort_order>1</sort_order>
+                                                    </delete>
+                                                    <run>
+                                                        <title>Run</title>
+                                                        <sort_order>10</sort_order>
+                                                    </run>
+                                                </children>
+                                            </crawler>
+                                            <log>
+                                                <title>Log</title>
+                                                <sort_order>20</sort_order>
+                                                <children>
+                                                    <clear>
+                                                        <title>Clear Log</title>
+                                                        <sort_order>0</sort_order>
+                                                    </clear>
+                                                </children>
+                                            </log>
+                                            <report>
+                                                <title>Reports</title>
+                                                <sort_order>30</sort_order>
+                                                <children>
+                                                    <clear>
+                                                        <title>Clear Reports</title>
+                                                        <sort_order>0</sort_order>
+                                                    </clear>
+                                                </children>
+                                            </report>
+                                        </children>
+                                    </crawler>
+                                </children>
+                            </tmcache>
+                        </children>
+                    </templates_master>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

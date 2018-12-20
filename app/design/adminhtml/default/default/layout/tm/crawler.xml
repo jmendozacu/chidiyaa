@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_tmcrawler_crawler_index>
+        <reference name="content">
+            <block type="tmcrawler/adminhtml_crawler" name="tmcrawler_crawler"/>
+        </reference>
+    </adminhtml_tmcrawler_crawler_index>
+
+    <adminhtml_tmcrawler_crawler_edit>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>tm/adminhtml/cache/styles.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="tmcrawler/adminhtml_crawler_edit" name="tmcrawler_crawler_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="tmcrawler/adminhtml_crawler_edit_tabs" name="tmcrawler_crawler_edit_tabs">
+                <block type="tmcrawler/adminhtml_crawler_edit_tab_main" name="tmcrawler_crawler_edit_tab_main" />
+                <block type="tmcrawler/adminhtml_crawler_edit_tab_state" name="tmcrawler_crawler_edit_tab_state" />
+                <block type="tmcrawler/adminhtml_crawler_edit_tab_log" name="tmcrawler_crawler_edit_tab_log" />
+                <block type="tmcrawler/adminhtml_crawler_edit_tab_report" name="tmcrawler_crawler_edit_tab_report" />
+                <action method="addTab"><name>main_section</name><block>tmcrawler_crawler_edit_tab_main</block></action>
+                <action method="addTab"><name>state_section</name><block>tmcrawler_crawler_edit_tab_state</block></action>
+                <action method="addTab"><name>log_section</name><block>tmcrawler_crawler_edit_tab_log</block></action>
+                <action method="addTab"><name>report_section</name><block>tmcrawler_crawler_edit_tab_report</block></action>
+            </block>
+        </reference>
+    </adminhtml_tmcrawler_crawler_edit>
+
+    <adminhtml_tmcrawler_crawler_log>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="tmcrawler/adminhtml_crawler_edit_tab_log" name="tmcrawler_crawler_edit_tab_log" />
+        </block>
+    </adminhtml_tmcrawler_crawler_log>
+
+    <adminhtml_tmcrawler_crawler_report>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="tmcrawler/adminhtml_crawler_edit_tab_report" name="tmcrawler_crawler_edit_tab_report" />
+        </block>
+    </adminhtml_tmcrawler_crawler_report>
+
+    <adminhtml_tmcrawler_log_index>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>tm/adminhtml/cache/styles.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="tmcrawler/adminhtml_log" name="tmcrawler_log"/>
+        </reference>
+    </adminhtml_tmcrawler_log_index>
+
+    <adminhtml_tmcrawler_log_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="tmcrawler/adminhtml_log_grid" name="tmcrawler_log_grid"/>
+        </block>
+    </adminhtml_tmcrawler_log_grid>
+
+    <adminhtml_tmcrawler_report_index>
+        <reference name="content">
+            <block type="tmcrawler/adminhtml_report" name="tmcrawler_report"/>
+        </reference>
+    </adminhtml_tmcrawler_report_index>
+
+    <adminhtml_tmcrawler_report_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="tmcrawler/adminhtml_report_grid" name="tmcrawler_report_grid"/>
+        </block>
+    </adminhtml_tmcrawler_report_grid>
+</layout>

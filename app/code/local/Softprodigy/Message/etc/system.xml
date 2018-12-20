@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <tabs>
+        <softprodigy>
+            <label>SoftProdigy</label>
+            <sort_order>100</sort_order>
+        </softprodigy>
+    </tabs>
+    <!-- we are adding a new section to our tab -->
+    <sections>
+        <!-- unique shortname for our section -->
+        <message>
+            <!-- the title of our section in the sidebar -->
+            <label>Message</label>
+            <!-- the tab under which we want our section to appear -->
+            <tab>softprodigy</tab>
+            <!-- order of section relative to our tab -->
+            <sort_order>10</sort_order>
+            <!-- visibility of our section -->
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <!-- we are adding some new groups to our section -->
+            <groups>
+                <!-- the unique short code for our group -->
+                <general>
+                    <!-- the title of our group -->
+                    <label>General Settings</label>
+                    <!-- order of group relative to the section -->
+                    <sort_order>10</sort_order>
+                    <!-- visibility of our group -->
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <!-- we are adding some new fields to our group -->
+                    <fields>
+						<banner translate="label">
+							<frontend_model>message/adminhtml_system_config_fieldset_banner</frontend_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</banner>
+                        <!-- the unique short code for our field -->
+                        <status>
+                            <!-- the label of our field -->
+                            <label>Enable Twilio</label>
+                            <!-- the type of our field -->
+                            <frontend_type>select</frontend_type>
+                            <!-- the source of our 'select' type -->
+                            <source_model>
+                                adminhtml/system_config_source_yesno
+                            </source_model>
+                            <!-- order relative to the group -->
+                            <sort_order>10</sort_order>
+
+                            <!-- visibility of our field -->
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </status>
+                        <accountSid translate="label comment">
+                            <label>Twilio Account id</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+								<status>1</status>
+							</depends>
+                        </accountSid>
+                        <authToken translate="label comment">
+                            <label>Twilio AuthToken</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+								<status>1</status>
+							</depends>
+                        </authToken>
+                         <status_gateway>
+                            <!-- the label of our field -->
+                            <label>Enable Sms Gateway Hub</label>
+                            <!-- the type of our field -->
+                            <frontend_type>select</frontend_type>
+                            <!-- the source of our 'select' type -->
+                            <source_model>
+                                adminhtml/system_config_source_yesno
+                            </source_model>
+                            <!-- order relative to the group -->
+                            <sort_order>25</sort_order>
+
+                            <!-- visibility of our field -->
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </status_gateway>
+                        <user translate="label comment">
+                            <label>Sms Gatewayhub User id</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+								<status_gateway>1</status_gateway>
+							</depends>
+                        </user>
+                        <sender_id translate="label comment">
+                            <label>Sms Gatewayhub Sender's id</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+								<status_gateway>1</status_gateway>
+							</depends>
+                        </sender_id>
+                         <password translate="label comment">
+                            <label>Sms Gatewayhub Password</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+								<status_gateway>1</status_gateway>
+							</depends>
+                        </password>
+                        <order_placed>
+                            <!-- the label of our field -->
+                            <label>Enable SMS when order is placed</label>
+                            <!-- the type of our field -->
+                            <frontend_type>select</frontend_type>
+                            <!-- the source of our 'select' type -->
+                            <source_model>
+                                adminhtml/system_config_source_yesno
+                            </source_model>
+                            <!-- order relative to the group -->
+                            <sort_order>32</sort_order>
+
+                            <!-- visibility of our field -->
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_placed>
+                        <order_create_event_template translate="label">
+							<label>Order Create Template</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>35</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>validate-length maximum-length-500</validate>
+							<depends>
+								<order_placed>1</order_placed>
+							</depends>
+						</order_create_event_template>
+                        <order_shipped>
+                            <!-- the label of our field -->
+                            <label>Enable SMS when order is shipped</label>
+                            <!-- the type of our field -->
+                            <frontend_type>select</frontend_type>
+                            <!-- the source of our 'select' type -->
+                            <source_model>
+                                adminhtml/system_config_source_yesno
+                            </source_model>
+                            <!-- order relative to the group -->
+                            <sort_order>40</sort_order>
+
+                            <!-- visibility of our field -->
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_shipped>
+                        <order_ship_event_template translate="label">
+							<label>Order shipped Template</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>45</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>validate-length maximum-length-500</validate>
+							<depends>
+								<order_shipped>1</order_shipped>
+							</depends>
+						</order_ship_event_template>
+                        <order_complete>
+                            <!-- the label of our field -->
+                            <label>Enable SMS when order is completed</label>
+                            <!-- the type of our field -->
+                            <frontend_type>select</frontend_type>
+                            <!-- the source of our 'select' type -->
+                            <source_model>
+                                adminhtml/system_config_source_yesno
+                            </source_model>
+                            <!-- order relative to the group -->
+                            <sort_order>50</sort_order>
+
+                            <!-- visibility of our field -->
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_complete>
+                        <order_complete_template translate="label">
+							<label>Order complete Template</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>55</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<validate>validate-length maximum-length-500</validate>
+							<depends>
+								<order_complete>1</order_complete>
+							</depends>
+						</order_complete_template>
+                    </fields>
+                </general>
+            </groups>
+        </message>
+    </sections>
+</config>

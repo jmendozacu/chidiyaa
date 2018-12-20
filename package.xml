@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Softprodigy_Bulkgenerate</name>
+    <version>1.1.1</version>
+    <stability>stable</stability>
+    <license uri="http://www.opensource.org/licenses/gpl-license.php">OSLv3.0</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Mass generate order invoice.</summary>
+    <description>Mass generate order invoice.</description>
+    <notes>Mass generate order invoice.</notes>
+    <authors><author><name>SoftProdigyINC</name><user>softprodigy</user><email>extensions@softprodigy.com</email></author></authors>
+    <date>2017-07-26</date>
+    <time>14:14:15</time>
+    <contents><target name="magelocal"><dir name="Softprodigy"><dir name="Bulkgenerate"><dir><dir name="Block"><dir name="Adminhtml"><dir name="Paymentoptions"><file name="Grid.php" hash="dc69144a325b6e1270048eda9595c4c0"/></dir><dir name="System"><dir name="Config"><file name="Exportbutton.php" hash="7db13846d2d783de4e2d176ee8fa079f"/></dir></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="e899a90a8030a6c556d365b7ad987ed7"/></dir><dir name="Model"><dir name="Mysql4"><dir name="Paymentoption"><file name="Collection.php" hash="0466918da9c6aac87efb2ed5186717fd"/></dir><file name="Paymentoption.php" hash="8cbd4149313d2ef14753b7a5f2f5b24c"/></dir><file name="Observer.php" hash="82e73081a0ff6e087cc45ca8b278750e"/><file name="Paymentoption.php" hash="114ea933de0eafd6a76307f59a4b0a42"/><dir name="System"><dir name="Config"><dir name="Backend"><file name="Paymentoption.php" hash="1c36f33fca3204f533cd26842b045ea5"/></dir></dir></dir></dir><dir name="Resource"><file name="Paymentoption.php" hash="aa2b170633d1f3d518c57780d54b2cef"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="ActionController.php" hash="356ed30bd9ec45103bf59008ac0aa3d7"/><file name="InvoiceController.php" hash="afcd33b5f2354fa03e933679e3102ab4"/></dir></dir><dir name="etc"><file name="config.xml" hash="5c539cbbd00a613514dbbceb6252f9a2"/><file name="system.xml" hash="edc3a0cbae3ddbcb5f638e9cef3fb6d4"/></dir><dir name="sql"><dir name="bulkgenerate_setup"><file name="install-1.1.0.php" hash="1d1a1ef2be3ee7b7595471f1bd5ab3fc"/></dir></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Softprodigy_Bulkgenerate.xml" hash="79eeab8f1cca3bc1b901075a53c4d98a"/></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="layout"><file name="bulkgenerate.xml" hash="69318a32cad01dbd4ccd0a0c3861aadd"/></dir><dir name="template"><dir name="bulkgenerate"><file name="massgenerate.phtml" hash="e933cb5ae9367e151c2236ffbabf62ee"/></dir></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.5.4</min><max>7.1.0</max></php></required></dependencies>
+</package>

@@ -1,0 +1,42 @@
+<config>
+<modules>
+    <MyPackage_MyModule>
+        <version>0.0.0.1</version>
+    </MyPackage_MyModule>
+</modules>
+<global>
+    <models>
+        <mymodule>
+            <class>MyPackage_MyModule_Model</class>
+        </mymodule>
+    </models>
+    <events>
+        <controller_action_predispatch_contacts_index_post>
+            <observers>
+                <mymodule>
+                    <class>mymodule/observer</class>
+                    <method>checkContacts</method>
+                </mymodule>
+            </observers>
+        </controller_action_predispatch_contacts_index_post>
+    </events>
+</global>
+<default>
+    <captcha>
+        <frontend>
+            <areas>
+                <contacts>
+                    <label>Contacts Page</label>
+                </contacts>
+            </areas>
+        </frontend>
+    </captcha>
+    <customer>
+        <captcha>
+            <always_for>
+                <contacts>1</contacts>
+            </always_for>
+        </captcha>
+    </customer>
+</default>
+</config>

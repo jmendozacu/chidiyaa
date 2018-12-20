@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <templates_master>
+            <title>Templates Master</title>
+            <sort_order>71</sort_order>
+            <children>
+                <tmcache translate="title" module="tmcache">
+                    <title>Full Page Cache</title>
+                    <sort_order>659</sort_order>
+                    <children>
+                        <tmcache_dashboard translate="title" module="adminhtml">
+                            <title>Dashboard</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/tmcache_dashboard/index</action>
+                        </tmcache_dashboard>
+                        <tmcache_usage>
+                            <title>Usage Statistics</title>
+                            <sort_order>20</sort_order>
+                            <action>adminhtml/tmcache_usage/index</action>
+                        </tmcache_usage>
+                        <tmcache_log>
+                            <title>Log</title>
+                            <sort_order>30</sort_order>
+                            <action>adminhtml/tmcache_log/index</action>
+                        </tmcache_log>
+                    </children>
+                </tmcache>
+            </children>
+        </templates_master>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <tmcache>
+                                        <title>Full Page Cache</title>
+                                    </tmcache>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <templates_master>
+                        <title>Templates Master</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <tmcache translate="title" module="tmcache">
+                                <title>Full Page Cache</title>
+                                <sort_order>659</sort_order>
+                                <children>
+                                    <tmcache_dashboard translate="title" module="adminhtml">
+                                        <title>Dashboard</title>
+                                        <sort_order>10</sort_order>
+                                    </tmcache_dashboard>
+                                    <tmcache_usage>
+                                        <title>Usage Statistics</title>
+                                        <sort_order>20</sort_order>
+                                        <children>
+                                            <delete>
+                                                <title>Delete Cache Records</title>
+                                                <sort_order>0</sort_order>
+                                            </delete>
+                                        </children>
+                                    </tmcache_usage>
+                                    <tmcache_log>
+                                        <title>Log</title>
+                                        <sort_order>30</sort_order>
+                                        <children>
+                                            <clear>
+                                                <title>Clear Log</title>
+                                                <sort_order>0</sort_order>
+                                            </clear>
+                                        </children>
+                                    </tmcache_log>
+                                </children>
+                            </tmcache>
+                        </children>
+                    </templates_master>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

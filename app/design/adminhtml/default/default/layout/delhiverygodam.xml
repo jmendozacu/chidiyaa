@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Delhivery
+ * @category   Delhivery
+ * @package    Delhivery_Godam
+ * @copyright  Copyright (c) 2010-2011 Delhivery. (http://www.delhivery.com)
+ * @license    Creative Commons Licence (CCL)
+ */
+ -->
+<layout version="0.1.0">
+    <godam_adminhtml_godam_index>
+        <reference name="content">
+            <block type="godam/adminhtml_godam" name="godam" />
+        </reference>
+    </godam_adminhtml_godam_index>
+	<godam_adminhtml_inventorylog_index>
+        <reference name="content">
+            <block type="godam/adminhtml_inventorylog" name="inventorylog" />
+        </reference>
+    </godam_adminhtml_inventorylog_index>
+    <godam_adminhtml_godam_edit>
+        <update handle="editor"/>
+    </godam_adminhtml_godam_edit>
+</layout>

@@ -1,0 +1,14 @@
+<config>
+   <modules>
+      <Extendware_EWBotBlocker>
+         <active>false</active>
+         <codePool>local</codePool>
+         <depends>
+            <Extendware_EWCore/>
+         </depends>
+         <extendware>
+            <name>Bot Blocker</name>
+         </extendware>
+      </Extendware_EWBotBlocker>
+   </modules>
+</config>

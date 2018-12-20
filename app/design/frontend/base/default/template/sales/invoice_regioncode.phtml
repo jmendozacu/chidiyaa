@@ -1,0 +1,12 @@
+<?php
+$order = $this->getOrder();
+
+if($order->getIsNotVirtual()){
+$region = Mage::getModel('directory/region')->load($order->getShippingAddress()->getRegionId());
+if($region->getId()){
+ $state_code = $region->getCode();
+ echo "<p>State Code: ".$state_code."</p>";
+}
+}
+
+ ?>

@@ -1,0 +1,31 @@
+zend_extension = /home/chidiyaa/public_html/ioncube/ioncube/ioncube_loader_lin_5.5.so
+
+change allow_url_fopen = on
+zlib.output_compression = on
+suhosin.session.cryptua = off
+zend.ze1_compatibility_mode = off
+extension=pdo.so
+extension=pdo_mysql.so
+; Enables loading encoded scripts. The default value is On
+;  zend_loader.enable=1
+
+; Disable license checks (for performance reasons)
+;     zend_loader.disable_licensing=0
+; The Obfuscation level supported by Zend Guard Loader. The levels are detailed in the official Zend Guard Documentation. 0 - no obfuscation is enabled
+;     zend_loader.obfuscation_level_support=3
+; Path to where licensed Zend products should look for the product license. For more information on how to create a license file, see the Zend Guard User Guide
+;     zend_loader.license_path=
+
+[Zend]
+
+;zend_extension= /usr/local/Zend/lib/Guard-7.0.0/php-5.5.x/ZendGuardLoader.so
+
+zend_extension= /usr/local/Zend/lib/Guard-7.0.0/php-5.5.x/ZendGuardLoader.so
+
+memory_limit = -1
+upload_max_filesize = 80M 
+
+extension=pdo.so
+extension=pdo_sqlite.so
+extension=sqlite.so
+extension=pdo_mysql.so

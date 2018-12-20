@@ -1,0 +1,75 @@
+<?php
+/*____________________________________________________________________
+
+* Name Extension: Magento Ajaxsearch Autocomplete And Suggest
+
+* Author: The Cmsmart Development Team 
+
+* Date Created: 2013
+
+* Websites: http://cmsmart.net
+
+* Technical Support: Forum - http://cmsmart.net/support
+
+* GNU General Public License v3 (http://opensource.org/licenses/GPL-3.0)
+
+* Copyright © 2011-2013 Cmsmart.net. All Rights Reserved.
+
+______________________________________________________________________*/
+?>
+
+<!-- <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
+ -->
+<!--<link rel="stylesheet" type="text/css" href="<?php // echo $this->getSkinUrl('less', array('_secure'=>true)) ?>/search.css" />-->
+<?php 
+	$SearchByCategory =Mage::getStoreConfig('ajaxsearch/searchbycategory/enable');
+	$choosenumbersofcategory =Mage::getStoreConfig('ajaxsearch/searchbycategory/choosenumbersofcategory');
+if($SearchByCategory == 1){
+?> 			
+<script type="text/javascript">
+jQuery(function(){
+	jQuery('#search_mini_form select').multiselect({
+		selectedList: <?php echo $choosenumbersofcategory;?>
+	});
+	
+});
+</script>
+<?php }?>
+<form id="search_mini_form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
+    <div class="form-search">
+		        <span class="p-reletive">
+        	<input id="search" type="text" placeholder="<?php echo $this->__('Search') ?>" name="<?php echo $this->helper('catalogsearch')->getQueryParamName() ?>"  class="input-text" autocomplete="off"/>
+        	<span class="loading"></span>
+        	<span class="clear-bt"></span>
+        </span>
+		<?php if($SearchByCategory == 1){?>
+        <select multiple="multiple" name="search_categories[]" id="search_categories">
+		<?php
+        foreach ($this->helper('ajaxsearch')->getCategoriesDropdown() as $mainCategory): 
+			$level = $mainCategory['level'];
+			$htmllevel = '';
+			if($level > 2){
+				for($i=2; $i <= $level; $i++){
+					$htmllevel.='&nbsp;&nbsp;&nbsp;'; 
+				}
+			}
+		?>
+            <option value="<?php echo $mainCategory['value']?>"><?php echo '&nbsp;'.$htmllevel.$mainCategory['label']; ?></option>
+            <?php endforeach;?>
+        </select>
+		<?php }?>
+		<label for="search"><?php echo $this->__('Search:') ?></label>
+
+        <button type="submit" title="<?php echo $this->__('Search') ?>" class="button"><span><span><?php echo $this->__('Search') ?></span></span></button>
+        <div id="search_autocomplete" class="search-autocomplete" style="display: none;"></div>
+    </div>
+</form>
+
+<?php echo Mage::helper('ajaxsearch')->getStyle(); ?>
+
+<script type="text/javascript">
+    var baseUrl = '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK); ?>';
+    var minchar = <?php echo Mage::getStoreConfig('ajaxsearch/settings/min_char') ?>;
+    var t_request = <?php echo Mage::getStoreConfig('ajaxsearch/settings/time_request') ?>                      
+</script>
+

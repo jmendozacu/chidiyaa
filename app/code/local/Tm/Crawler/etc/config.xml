@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TM_Crawler>
+            <version>1.1.3</version>
+        </TM_Crawler>
+    </modules>
+
+    <global>
+        <models>
+            <tmcrawler>
+                <class>TM_Crawler_Model</class>
+                <resourceModel>tmcrawler_resource</resourceModel>
+            </tmcrawler>
+            <tmcrawler_resource>
+                <class>TM_Crawler_Model_Resource</class>
+                <entities>
+                    <crawler>
+                        <table>tm_crawler</table>
+                    </crawler>
+                    <report>
+                        <table>tm_crawler_report</table>
+                    </report>
+                </entities>
+            </tmcrawler_resource>
+        </models>
+        <blocks>
+            <tmcrawler>
+                <class>TM_Crawler_Block</class>
+            </tmcrawler>
+        </blocks>
+        <helpers>
+            <tmcrawler>
+                <class>TM_Crawler_Helper</class>
+            </tmcrawler>
+        </helpers>
+        <resources>
+            <tm_crawler_setup>
+                <setup>
+                    <module>TM_Crawler</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </tm_crawler_setup>
+        </resources>
+    </global>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <tmcrawler>
+                    <file>tm/crawler.xml</file>
+                </tmcrawler>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <TM_Crawler>
+                    <files>
+                        <default>TM_Crawler.csv</default>
+                    </files>
+                </TM_Crawler>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <admin>
+        <routers>
+             <adminhtml>
+                 <args>
+                     <modules>
+                         <tmcrawler before="Mage_Adminhtml">TM_Crawler_Adminhtml</tmcrawler>
+                     </modules>
+                 </args>
+             </adminhtml>
+        </routers>
+    </admin>
+
+    <crontab>
+        <jobs>
+            <tmcrawler_crawl>
+                <schedule>
+                    <cron_expr>*/10 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>tmcrawler/observer::crawl</model>
+                </run>
+            </tmcrawler_crawl>
+            <tmcrawler_check_state>
+                <schedule>
+                    <cron_expr>45 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>tmcrawler/observer::checkState</model>
+                </run>
+            </tmcrawler_check_state>
+            <tmcrawler_remove_old_reports>
+                <schedule>
+                    <cron_expr>30 1 * * *</cron_expr> <!-- Every Day at 1:30AM -->
+                </schedule>
+                <run>
+                    <model>tmcrawler/observer::removeOldReports</model>
+                </run>
+            </tmcrawler_remove_old_reports>
+        </jobs>
+    </crontab>
+
+    <default>
+        <tmcrawler>
+            <user_agent>
+                <value>tm_crawler</value>
+                <preserve_cache_value>tm_crawler_preserve_cache</preserve_cache_value>
+                <regexp>tm_crawler_(\d+)</regexp>
+            </user_agent>
+            <cron>
+                <max_crawlers>2</max_crawlers>
+                <min_interval>1</min_interval>
+            </cron>
+            <report>
+                <http_codes_to_skip>200</http_codes_to_skip>
+            </report>
+        </tmcrawler>
+    </default>
+</config>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <EH_ProductScheduler>
+      <version>0.1.0</version>
+    </EH_ProductScheduler>
+  </modules>
+  <frontend>
+	<routers>
+		<productscheduler>
+			<use>standard</use>
+			<args>
+				<module>EH_ProductScheduler</module>
+				<frontName>productscheduler</frontName>
+			</args>
+		</productscheduler>
+	</routers>
+  </frontend>
+  <global>
+    <helpers>
+      <productscheduler>
+        <class>EH_ProductScheduler_Helper</class>
+      </productscheduler>
+    </helpers>
+	<models>
+	  <productscheduler>
+		<class>EH_ProductScheduler_Model</class>
+		<resourceModel>productscheduler_mysql4</resourceModel>
+	  </productscheduler>
+	</models>
+	<resources>
+	  <productscheduler_setup>
+		<setup>
+		  <module>EH_ProductScheduler</module>
+		  <class>Mage_Eav_Model_Entity_Setup</class>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </productscheduler_setup>
+	  <productscheduler_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </productscheduler_write>
+	  <productscheduler_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </productscheduler_read>
+	</resources>
+	<events>
+	  <catalog_product_save_before> <!-- identifier of the event we want to catch -->
+        <observers>
+          <catalog_product_save_before_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>productscheduler/observer</class> <!-- observers class alias -->
+            <method>Observer</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </catalog_product_save_before_handler>
+        </observers>
+      </catalog_product_save_before>
+    </events>
+  </global>
+  <crontab>
+        <jobs>            		
+             <EH_productscheduler>
+                <schedule><cron_expr>* * * * *</cron_expr></schedule>
+                <run><model>productscheduler/cron::Cron</model></run>
+            </EH_productscheduler>
+        </jobs>
+    </crontab>
+</config> 

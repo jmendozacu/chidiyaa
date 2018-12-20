@@ -1,0 +1,13 @@
+ <!-- Categories display start -->
+        <div class="home_categories">
+              <ul>
+                 <?php $helper = $this->helper('catalog/category') ?>
+                 <?php foreach ($helper->getStoreCategories() as $_category): ?>
+                 <li>
+                     <a href="<?php echo Mage::getModel('catalog/category')->setData($_category->getData())->getUrl(); ?>" title="<?php echo $_category->getName() ?>"><?php echo $_category->getName() ?></a>
+                 </li>
+                 <?php endforeach ?>
+              </ul>
+        </div>
+         <?php echo $this->getChildHtml() ?>
+<!-- Categories display end -->

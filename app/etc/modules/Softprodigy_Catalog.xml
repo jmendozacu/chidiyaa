@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Softprodigy_Catalog>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Softprodigy_Catalog>
+    </modules>
+</config>

@@ -1,0 +1,205 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+
+<div class="top-header">
+    <div class="fsb-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <span><?php echo $this->__('We ship World wide | COD available in India');?></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shadow"></div>
+    <div class="swipe-left"></div>
+    <div class="swipe">
+        <div class="swipe-menu">
+        	<?php echo $this->getChildHtml('topMenu') ?>
+            <?php echo $this->getChildHtml('topLinks') ?>  
+            <?php 
+           if(Mage::getSingleton('customer/session')->isLoggedIn()):
+            ?>
+            <ul class="links"><li class="first"><a href="<?php echo Mage::getBaseUrl();?>customer/account/" title="<?php echo $this->__('My Account');?>"><?php echo $this->__('My Account');?></a></li></ul>
+                
+            <?php endif;?>
+           
+            <?php echo $this->getChildHtml('currency_2') ?>
+           <!-- <?php echo $this->getChildHtml('store_language_2') ?>
+            <?php //echo $this->getChildHtml('footer_links') ?>
+            <?php//echo $this->getChildHtml('cms_footer_links') ?>
+            <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('cms_footer_links')->toHtml() ?>   
+            <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links')->toHtml() ?>  
+            <?php //echo $this->getLayout()->createBlock('core/template')->setTemplate('page/template/custum_link_header.phtml')->toHtml(); ?>-->
+        </div>
+    </div>
+    <div class="top-icon-menu">
+        <div class="swipe-control"><i class="fa fa-align-justify"></i></div>
+        <div class="center-block mobile-logo">
+        	<?php if ($this->getIsHomePage()):?>
+                            <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                            <?php else:?>
+                                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+            <?php endif?>
+        </div>
+        <div class="pull-right right-side">
+
+
+        	<a href="<?php echo Mage::getBaseUrl();?>customer/account/" title="My Account" onclick="return false;"><i class="fa fa-user"></i></a>
+            <div class="top-search"><i class="fa fa-search"></i></div>
+        </div>
+      	
+        
+        <span class="clear"></span>
+    </div>
+
+    <div class="header-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="header text-center">
+                    <div class="skip-links"> <span href="#header-account" class="skip-link skip-account"></span></div>
+                            <div id="header-account" class="skip-content"></div>
+
+                        <div class="logo-container f-left">
+                            
+                           
+                            <?php if ($this->getIsHomePage()):?>
+                            <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+                            <?php else:?>
+                                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                            <?php endif?>
+                        </div>
+                        
+                        <div class="topmenu-desktop-mobile">
+                            <?php echo $this->getChildHtml('topMenu') ?>
+                        </div>
+                        
+                        <div class="f-right my-account-links">
+                              <ul class="list-inline top-right-links">
+                                    <li><?php echo $this->getChildHtml('store_language') ?></li>
+                                    <li><?php echo $this->getChildHtml('currency') ?>  </li>
+                                    <!-- <li><a href="<?php echo Mage::getBaseUrl();?>wishlist"><i class="fa fa-heart-o"></i> </a></li> -->
+                                    <li><?php echo $this->getChildHtml('cart_header'); ?></li>
+                                    <li>
+                                        <ul class="links">
+                                        <?php 
+                                       if(Mage::getSingleton('customer/session')->isLoggedIn()):
+                                        ?>
+                                            <li class="first"><a href="<?php echo Mage::getBaseUrl();?>customer/account/" title="<?php echo $this->__('My Account');?>"><i class="fa fa-user"></i></a></li>
+                                             <li class="first"><a href="<?php echo Mage::getBaseUrl();?>customer/account/logout" title="<?php echo $this->__('Log Out');?>"><?php echo $this->__('Log Out');?></a></li>
+                                        <?php else:?>
+                                             <li class="first"><a href="<?php echo Mage::getBaseUrl();?>customer/account/" title="<?php echo $this->__('My Account');?>"><i class="fa fa-user"></i></a></li>
+                                         <?php endif;?>
+                                            <li><a href="#" id="fa-search-showhide"><i class="fa fa-search"></i></a></li>
+                                        </ul>
+                                    </li>
+                              </ul>      
+                              <span class="search_home mobile-search-home"><?php echo $this->getChildHtml('topSearch') ?></span>
+                        </div>
+                    
+                         <span class="search_home" id="search_home_icon" style="display:none;">
+                            <?php echo $this->getChildHtml('topSearch') ?>
+                        </span>
+                    </div>
+                      
+					<?php echo $this->getChildHtml('custom_currency_selector') ?>
+                    <?php echo $this->getChildHtml('store_language') ?>
+                    <?php //echo $this->getChildHtml('currency_top') ?>                       
+    
+                      <!-- END   How to add Currency selector to Magento's header -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	<?php echo $this->getChildHtml('topContainer'); ?>
+</div>
+<?php if(Mage::getSingleton('cms/page')->getIdentifier() == 'home'  && Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms' ) :  ?>
+       <?php  echo ($this->getLayout()->createBlock('cms/block')->setBlockId('slider_1')->toHtml()); ?>
+
+        <?php
+
+        echo $this->getLayout()->createBlock('catalog/product_new')->setTemplate('catalog/product/new.phtml')->toHtml();
+
+        ?>
+   
+
+
+         <?php echo $this->getLayout()->createBlock('catalogsale/widget_carousel')->setTemplate('catalog/product/widget/sale/sale_carousel_list.phtml')->toHtml(); ?>
+        
+        <?php  echo $this->getLayout()->createBlock('cms/block')->setBlockId('home_page_journal')->toHtml(); ?>
+
+        <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/product/main_category.phtml')->toHtml(); ?>
+       
+     
+
+<?php endif;  ?>
+<script>
+/*jQuery(".search_icon").click(function(e){
+    //jQuery(".search_icon").hide();
+    jQuery(".search_icon").css("display", "none"); 
+    //jQuery(".search_home").show();
+    jQuery(".search_home").css("display", "block"); 
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+});
+
+/*jQuery("html").on('click', function(e){
+     if (jQuery(e.target).closest('.form-search').length ) return false;
+    if( jQuery(".search_home").css('display') == 'block') {
+    jQuery(".search_icon").css("display", "block"); 
+    //jQuery(".search_home").show();
+    jQuery(".search_home").css("display", "none"); 
+    }
+    });*/
+
+    jQuery("#fa-search-showhide").on('click', function(e){
+
+    if( jQuery("#search_home_icon").css('display') == 'block') {
+
+    jQuery("#search_home_icon").css("display", "none"); 
+   
+    }else{
+
+     jQuery("#search_home_icon").css("display", "block"); 
+
+    }
+
+    });
+</script>
+<style>
+    .header .links li .last
+        {
+            display: block ;
+        }
+</style>

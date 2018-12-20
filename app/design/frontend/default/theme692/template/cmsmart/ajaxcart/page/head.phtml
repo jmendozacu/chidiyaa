@@ -1,0 +1,49 @@
+<?php	
+	$ajaxcart = Mage::getStoreConfig('ajaxcart');
+	$url = Mage::getBaseUrl();
+	$av = @$ajaxcart['viewsetting'];
+if(@$av['enableview']) {
+	//$head = Mage::app()->getLayout()->getBlock('head');
+	//$head->addItem('skin_css', 'cmsmart/ajaxcart/css/default.css');
+?>
+<link rel="stylesheet" href="<?php echo $this->getSkinUrl(); ?>cmsmart/ajaxcart/css/<?php echo @$av['themeoptions']?$av['themeoptions']:'default'; ?>.css" type="text/css" />
+
+<style type="text/css">
+	#ajaxcartmsg {
+		background: #<?php echo $ajaxcart['optionview']['background_color'];?> !important;
+		border:<?php echo $ajaxcart['optionview']['border_size'];?>px solid #<?php echo $ajaxcart['optionview']['border_color'];?> !important;
+	}
+
+	div#ajaxcart { margin-left:<?php echo $av['ajaxcart_left'];?>px;  /* display:none;  top:10px;  left:0; */
+		width: <?php echo $av['ajaxcart_width'];?>px;
+		background:#<?php echo $av['background_color'];?>;
+		border:<?php echo $av['border_size'];?>px solid #<?php echo $av['border_color'];?> !important;
+		box-shadow:<?php echo $av['boxshadow'];?>
+	}
+
+<?php 
+	if(@$av['ajaxcarticonp']){
+	$ex = explode(',', str_replace(' ','', @$av['ajaxcarticonp']));
+?>
+	/*#ajaxscicon{}*/
+	
+<?php } ?>
+</style>
+
+
+<script type="text/javascript">
+//<![CDATA[
+	var baseUrlAjax = '<?php echo $url; ?>';
+	var cartlinkclass = '<?php echo @$av['linkcartclass']; ?>';
+	var ajaxConfirmMsgDelItem = '<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>';
+	var ajaxConfirmMsgEmpty = '<?php echo $this->__('Empty cart?') ?>';
+//]]	
+</script>
+
+<?php if(@$av['enableicon']){
+	//$cart_icon =' media/cmsmart/ajaxcart/'.(@$av['carticon']?@$av['carticon']:'cart.png');
+	$cart_icon ='media/cmsmart/ajaxcart/cart_icon.png';
+ ?>
+<div id="ajaxscicon"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).$cart_icon;?>" /><span><?php echo (int)$this->helper('checkout/cart')->getSummaryCount();?></span></div>
+<?php } ?>
+<?php } ?>

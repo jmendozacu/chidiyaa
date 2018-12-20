@@ -1,0 +1,112 @@
+<?php
+/**
+ * Softprodigy System Solutions Pvt. Ltd
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.idealiagroup.com/magento-ext-license.html
+ *
+ * @category    Softprodigy
+ * @package     Softprodigy_Sociallogin
+ * @copyright   Copyright (c) 2015 Softprodigy System Solutions Pvt. Ltd (http://www.softprodigy.com)
+ * @license    http://www.opensource.org/licenses/gpl-license.php  GNU General Public License
+ */
+?>
+<div class="account-login">
+    <div class="page-title">
+        <h1><?php echo $this->__('Login or Create an Account') ?></h1>
+    </div>
+    <?php 
+    echo Mage::getStoreConfig('softprodigy_sociallogin/general/showonloginpage');
+    if(Mage::getStoreConfig('softprodigy_sociallogin/general/showonloginpage')== 'top'){
+        $_social = $this->getLayout()->createBlock('softprodigy_sociallogin/button');
+        echo $_social->setTemplate('softprodigy_sociallogin/button.phtml')->toHtml(); } ?>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php /* Extensions placeholder */ ?>
+    <?php echo $this->getChildHtml('customer.form.login.extra')?>
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+        <div class="col2-set">
+            <div class="col-1 new-users">
+                <div class="content">
+                    <h2><?php echo $this->__('New Customers') ?></h2>
+                    <p><?php echo $this->__('By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.') ?></p>
+                </div>
+            </div>
+            <div class="col-2 registered-users">
+                <div class="content">
+                    <h2><?php echo $this->__('Registered Customers') ?></h2>
+                    <p><?php echo $this->__('If you have an account with us, please log in.') ?></p>
+                    <ul class="form-list">
+                        <li>
+                            <label for="email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                            <div class="input-box">
+                                <?php if(Mage::getVersion() == '1.8.1.0'){?> <input type="text" name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" /> <?php } else { ?> <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" /> <?php } ?>
+                            </div>
+                        </li>
+                        <li>
+                            <label for="pass" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                            <div class="input-box">
+                                <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+                            </div>
+                        </li>
+                        <?php echo $this->getChildHtml('form.additional.info'); ?>
+                    </ul>
+                    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+                    <?php
+                    if(Mage::getStoreConfig('softprodigy_sociallogin/general/showonloginpage') == 'inloginbox'){ ?>
+                        <style type="text/css">
+                            .softprodigy-social-button-login .softprodigy-icon-social{
+                                float: left;
+                            }
+                        </style>
+                        <?php
+                        $block = new SoftProdigy_SocialLogin_Block_Button();
+                        $check_show_social = Mage::helper('softprodigy_sociallogin')->checkShowSociallogin();
+                        if($check_show_social == true && Mage::getSingleton('customer/session')->IsLoggedIn() == false): ?>
+                            <link type="text/css" rel="stylesheet" media="screen" href="<?php echo $block->getSkinUrl('softprodigy_sociallogin/css/style.css');?>"/>
+                            <script type="text/javascript" src="<?php echo $block->getSkinUrl('softprodigy_sociallogin/js/sociallogin.js');?>"></script>
+                            <div class="softprodigy-socialconnect-social">
+                                <p><?php echo $this->__('You can login using your social network account.') ?></p>
+                                <div class="softprodigy-social-button-login">
+                                    <?php
+                                    if($block->getButtons()){
+                                        foreach($block->getButtons() as $button){
+                                            echo $button->render();
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        <?php endif;
+                    } ?>
+                </div>
+            </div>
+        </div>
+        <div class="col2-set">
+            <div class="col-1 new-users">
+                <div class="buttons-set">
+                    <button type="button" title="<?php echo $this->__('Create an Account') ?>" class="button" onclick="window.location='<?php echo $this->getCreateAccountUrl() ?>';"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
+                </div>
+            </div>
+            <div class="col-2 registered-users">
+                <div class="buttons-set">
+                    <a href="<?php echo $this->getForgotPasswordUrl() ?>" class="f-left"><?php echo $this->__('Forgot Your Password?') ?></a>
+                    <button type="submit" class="button" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <?php if(Mage::getStoreConfig('softprodigy_sociallogin/general/showonloginpage')== 'belowloginbox'){
+        $_social = $this->getLayout()->createBlock('softprodigy_sociallogin/button');
+        echo $_social->setTemplate('softprodigy_sociallogin/button.phtml')->toHtml(); } ?>
+    <script type="text/javascript">
+        //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+        //]]>
+    </script>
+</div>
+

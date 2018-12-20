@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout>
+	<ewbotblocker_bot_verify>
+		<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+		<reference name="head">
+			<action method="setRobots"><robots>noindex,nofollow</robots></action>
+		</reference>
+		<reference name="content">
+			<block type="ewbotblocker/bot_verify" name="ewbotblocker_verify" template="extendware/ewbotblocker/bot/verify.phtml"/>
+		</reference>
+	</ewbotblocker_bot_verify>
+</layout>

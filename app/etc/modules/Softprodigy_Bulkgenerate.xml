@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Softprodigy_Bulkgenerate>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Softprodigy_Bulkgenerate>
+    </modules>
+</config>

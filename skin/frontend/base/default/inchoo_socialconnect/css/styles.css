@@ -1,0 +1,45 @@
+/**
+ * Inchoo is not affiliated with or in any way responsible for this code.
+ *
+ * Commercial support is available directly from the [extension author](http://www.techytalk.info/contact/).
+ *
+ * @category Marko-M
+ * @package SocialConnect
+ * @author Marko Martinović <marko@techytalk.info>
+ * @copyright Copyright (c) Marko Martinović (http://www.techytalk.info)
+ * @license http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ */
+
+div.inchoo-socialconnect-register,
+div.inchoo-socialconnect-checkout,
+div.inchoo-socialconnect-login {
+    margin-top: 28px;
+}
+
+div.inchoo-socialconnect-login .content {
+    min-height: 100px;
+}
+
+div.inchoo-socialconnect-register .fieldset {
+    margin: 0px;
+}
+
+div.inchoo-socialconnect-account .col3-set .col-1 {
+    width: 29%
+}
+
+div.inchoo-socialconnect-account .col3-set .col-2 {
+    width: 49%
+}
+
+div.inchoo-socialconnect-account .col3-set .col-3 {
+    width: 19%
+}
+
+div.inchoo-socialconnect-account .col2-set .col-1 {
+    width: 79%
+}
+
+div.inchoo-socialconnect-account .col2-set .col-2 {
+    width: 19%
+}

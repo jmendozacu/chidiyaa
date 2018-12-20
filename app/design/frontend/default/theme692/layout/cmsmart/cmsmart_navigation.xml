@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+			<block type="page/html" name="navigation_head" template="cmsmart/navigation/page/head.phtml"/>
+			<action ifconfig="navigation/general/enableview" method="addCss"><stylesheet>css/cmsmart/navigation/navigation.css</stylesheet></action>
+			<action ifconfig="navigation/general/enableview" method="addCss"><stylesheet>css/cmsmart/navigation/jquery.ui.slider.css</stylesheet></action>
+			<!-- <action ifconfig="navigation/general/usejquery" method="addJs"><script>cmsmart/jquery/navigation/jquery-1.9.1.js</script></action> -->
+			<action ifconfig="navigation/general/enableview" method="addJs"><script>cmsmart/jquery/navigation/jquery.easing.1.3.js</script></action>
+			<action ifconfig="navigation/general/enableview" method="addJs"><script>cmsmart/jquery/navigation/navigation.js</script></action>
+			<!-- <action ifconfig="navigation/general/enableview" method="addJs"><script>cmsmart/jquery/navigation/jquery.ui.core.min.js</script></action>
+			<action ifconfig="navigation/general/enableview" method="addJs"><script>cmsmart/jquery/navigation/jquery.ui.widget.min.js</script></action>	
+			<action ifconfig="navigation/general/enableview" method="addJs"><script>cmsmart/jquery/navigation/jquery.ui.mouse.min.js</script></action>
+			<action ifconfig="navigation/general/enableview" method="addJs"><script>cmsmart/jquery/navigation/jquery.ui.slider.min.js</script></action>	 -->
+			<action ifconfig="navigation/general/enableview" method="addJs"><script>cmsmart/jquery/navigation/jquery-noconflict.js</script></action>
+
+        </reference>
+		<!--
+		<reference name="left">
+			<block type="navigation/options" name="navigation_brands" after="navigation.navleft" template="cmsmart/navigation/brands.phtml">
+				<action method="setData" ><name>attribute_id</name><value>510</value></action>
+				<action method="setData" ><name>limit</name><value>50</value></action>
+				<action method="setData" ><name>title</name><value>Brands</value></action>
+			</block>
+		</reference>
+		-->
+
+			
+    </default>
+
+	
+    <cms_index_index>
+		<reference name="head">
+			<!-- <action method="removeItem"><type>js</type><name>cmsmart/jquery/navigation/jquery-1.9.1.js</name></action> -->
+			<action method="removeItem"><type>js</type><name>cmsmart/jquery/navigation/jquery.easing.1.3.js</name></action>
+			<action method="removeItem"><type>js</type><name>cmsmart/jquery/navigation/navigation.js</name></action>
+			<!-- <action method="removeItem"><type>js</type><name>cmsmart/jquery/navigation/jquery.ui.core.min.js</name></action>
+			<action method="removeItem"><type>js</type><name>cmsmart/jquery/navigation/jquery.ui.widget.min.js</name></action>
+			<action method="removeItem"><type>js</type><name>cmsmart/jquery/navigation/jquery.ui.mouse.min.js</name></action>
+			<action method="removeItem"><type>js</type><name>cmsmart/jquery/navigation/jquery.ui.slider.min.js</name></action>
+			<action method="removeItem"><type>js</type><name>cmsmart/jquery/navigation/jquery-noconflict.js</name></action> -->
+		</reference>
+    </cms_index_index>
+	
+    <brands_index_index>
+        <reference name="root">
+           <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+
+        <reference name="right">
+           <block type="navigation/catalog_layer_view" name="navigation.navleft" before="-" template="cmsmart/navigation/layer/view.phtml"/> 
+        </reference>
+		
+        <reference name="content">
+		
+			<block type="navigation/options" name="catalog_brands_detail" template="cmsmart/navigation/detail.phtml" before="-" />
+		
+            <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
+                <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="cmsmart/navigation/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+					<action method="setColumnCount"><count>4</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                </block>
+            </block>
+			
+    		<block type="navigation/top" name="navigation.top" before="category.products" template="navigation/top.phtml"/>
+			
+			<block type="navigation/options" name="navigation_catalog_brands" template="cmsmart/navigation/brands.phtml" after="-" >
+				 <action method="setData"><name>attribute_id</name><value>510</value></action>
+				 <action method="setData"><name>limit</name><value>50</value></action>
+				 <action method="setData"><name>title</name><value>More Brands</value></action>
+			</block>
+			
+			
+        </reference>
+    </brands_index_index>
+
+	
+    <navigation_index_detail>
+        <reference name="root">
+           <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+
+        <reference name="right">
+           <block type="navigation/catalog_layer_view" name="navigation.navleft" before="-" template="cmsmart/navigation/layer/view.phtml"/> 
+        </reference>
+		
+        <reference name="content">
+		
+			<block type="navigation/options" name="catalog_brands_detail" template="cmsmart/navigation/detail.phtml" before="-" />
+
+            <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
+                <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="cmsmart/navigation/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+					<action method="setColumnCount"><count>4</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                </block>
+            </block>
+			
+    		<block type="navigation/top" name="navigation.top" before="category.products" template="navigation/top.phtml"/>
+			
+			<block type="navigation/options" name="navigation_catalog_brands" template="cmsmart/navigation/brands.phtml" after="-" >
+				 <action method="setData"><name>attribute_id</name><value>510</value></action>
+				 <action method="setData"><name>limit</name><value>50</value></action>
+				 <action method="setData"><name>show_label</name><value>1</value></action>
+				 <action method="setData"><name>title</name><value>More Brands</value></action>
+			</block>
+			
+			
+        </reference>
+    </navigation_index_detail>
+	
+    <navigation_index_index>
+        <reference name="root">
+           <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+
+        <reference name="right">
+           <block type="navigation/catalog_layer_view" name="navigation.navleft" before="-" template="cmsmart/navigation/layer/view.phtml"/> 
+        </reference>
+        <reference name="content">
+		<!--
+			<block type="navigation/options" name="navigation_catalog_brands" template="cmsmart/navigation/brands.phtml" before="-" >
+				 <action method="setData"><name>attribute_id</name><value>510</value></action>
+				 <action method="setData"><name>limit</name><value>50</value></action>
+				 <action method="setData"><name>title</name><value>Brands</value></action>
+				 <action method="setData"><name>show_label</name><value>1</value></action>
+			</block>
+		-->
+			<block type="navigation/catalog_layer_view" name="navigation.top" before="-" template="cmsmart/navigation/layer/top.phtml"/>
+            <block type="catalog/category_view" name="category.products" template="catalog/category/view.phtml">
+                <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="cmsmart/navigation/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+					<action method="addColumnCountLayoutDepend"><layout>empty</layout><count>6</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>one_column</layout><count>5</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_left</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>two_columns_right</layout><count>4</count></action>
+                    <action method="addColumnCountLayoutDepend"><layout>three_columns</layout><count>3</count></action>
+					<action method="setColumnCount"><count>4</count></action>
+                    <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+                </block>
+            </block>
+    		<block type="navigation/top" name="navigation.top" before="category.products" template="navigation/top.phtml"/>
+        </reference>
+    </navigation_index_index>
+	
+	<catalog_product_view>
+		<reference name="additional">
+			<action method="setTemplate"><template>cmsmart/navigation/attributes.phtml</template></action>
+		</reference>
+	</catalog_product_view>
+	
+    <catalog_category_layered> 
+		<remove name="catalog.leftnav" />
+		<reference name="right">
+           <block type="navigation/catalog_layer_view" name="navigation.navleft" before="-" template="cmsmart/navigation/layer/view.phtml"/> 
+        </reference>  
+		<reference name="product_list_toolbar">
+			<!-- if enable -->
+			<action method="setTemplate"><template>cmsmart/navigation/toolbar.phtml</template></action>
+		</reference>
+		
+		<reference name="content">
+			
+			<block type="navigation/catalog_layer_view" name="navigation.top" before="-" template="cmsmart/navigation/layer/top.phtml"/> 
+			
+			<!--
+			<block type="navigation/options" name="navigation_catalog_brands" template="cmsmart/navigation/brands.phtml" after="-" >
+				 <action method="setData"><name>attribute_id</name><value>510</value></action>
+				 <action method="setData"><name>limit</name><value>50</value></action>
+				 <action method="setData"><name>title</name><value>Brands</value></action>
+				 <action method="setData"><name>show_label</name><value>1</value></action>
+			</block>
+			-->
+		</reference>
+		
+       
+     
+		
+    </catalog_category_layered> 
+
+    
+    <catalogsearch_result_index>
+        <remove name="catalogsearch.leftnav" />        
+        <reference name="right">
+           <block type="navigation/catalog_layer_view" name="navigation.navleft" before="-" template="cmsmart/navigation/layer/view.phtml"/> 
+        </reference>  
+        <reference name="content">
+                <block type="navigation/search_layer_top" name="navigation.navtop" before="search.result" template="navigation/view_top.phtml"/>
+        </reference>
+    </catalogsearch_result_index>   
+</layout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <TM_Cache>
+            <active>true</active>
+            <codePool>local</codePool>
+            <!-- <depends>
+                <Mage_Log/>
+            </depends> -->
+        </TM_Cache>
+    </modules>
+</config>

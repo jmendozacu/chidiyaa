@@ -1,0 +1,85 @@
+"<b>Note: </b> if your store is behind a load balance use should use the forwarded mode.","<b>Note: </b> if your store is behind a load balance use should use the forwarded mode."
+Action,Action
+"Add after","Add after"
+"Add Bot","Add Bot"
+"Add Filter","Add Filter"
+"Add Form ID","Add Form ID"
+Advanced,Advanced
+"Are you sure?","Are you sure?"
+"Ban Length (days)","Ban Length (days)"
+Bot,Bot
+"Bot Blocker","Bot Blocker"
+"Bot has been deleted","Bot has been deleted"
+"Bot has been successfully saved","Bot has been successfully saved"
+Bots,Bots
+"Change status","Change status"
+"Changing this will change your honeypot urls. It is useful to change this if you want to invalidate old urls due to change in settings or something similar.","Changing this will change your honeypot urls. It is useful to change this if you want to invalidate old urls due to change in settings or something similar."
+Configuration,Configuration
+Configure,Configure
+"Default Status","Default Status"
+Delete,Delete
+Disabled,Disabled
+Edit,Edit
+Enabled,Enabled
+"Expires At","Expires At"
+Extendware,Extendware
+"First Seen At","First Seen At"
+"Form ID","Form ID"
+"Form Protection","Form Protection"
+"Form Protection Excluded Forms","Form Protection Excluded Forms"
+"Form Protection Honeypotted Urls","Form Protection Honeypotted Urls"
+"Forwarded IP (HTTP_X_FORWARDED)","Forwarded IP (HTTP_X_FORWARDED)"
+General,General
+"General Information","General Information"
+"Honeypot Form","Honeypot Form"
+"Honeypot Link","Honeypot Link"
+"Honeypot Paths RegExp","Honeypot Paths RegExp"
+ID,ID
+"If disabled the bot will no longer be blocked. Useful for whitelisting the address.","If disabled the bot will no longer be blocked. Useful for whitelisting the address."
+"If disabled, then no bot blocking will be performed.","If disabled, then no bot blocking will be performed."
+"If enabled the bot will only be rejected if they send a POST request on a honey-potted url. With this enabled honey-potted links using ""nofollow"" attribute will not be outputted. Also, honey-potted form protection urls will only be placed on forms with a method of POST.","If enabled the bot will only be rejected if they send a POST request on a honey-potted url. With this enabled honey-potted links using ""nofollow"" attribute will not be outputted. Also, honey-potted form protection urls will only be placed on forms with a method of POST."
+"If enabled the session will only check if it is a bot once per session.","If enabled the session will only check if it is a bot once per session."
+"If enabled, then an invisible form will be added to the site. If a bot auto-submits this form, then it will be identified and banned.","If enabled, then an invisible form will be added to the site. If a bot auto-submits this form, then it will be identified and banned."
+"If enabled, then an invisible link with the ""nofollow"" attribute set. If a bad bot follows it then it will be banned. Some good bots sometimes follow this so if you enable ensure that you have set ""/ewbb/"" in your robots.txt file to reduce this chance. Ensure ""Only Post"" option in Advanced section is set to disabled.","If enabled, then an invisible link with the ""nofollow"" attribute set. If a bad bot follows it then it will be banned. Some good bots sometimes follow this so if you enable ensure that you have set ""/ewbb/"" in your robots.txt file to reduce this chance. Ensure ""Only Post"" option in Advanced section is set to disabled."
+"If enabled, then the ""action"" attribute of forms will be removed and added back with Javascript. This tricks bots as many will not know how to submit the form.","If enabled, then the ""action"" attribute of forms will be removed and added back with Javascript. This tricks bots as many will not know how to submit the form."
+"If enabled, then the ""action"" attribute will be rewritten to a url that if it receives traffic the bot will be banned. Normal browsers with javascript will use the correct action url so users will not be affected. <b>Note: </b>Test each form after enabling and add any incompatible forms to the ""Form Protection Excluded Forms"" list.","If enabled, then the ""action"" attribute will be rewritten to a url that if it receives traffic the bot will be banned. Normal browsers with javascript will use the correct action url so users will not be affected. <b>Note: </b>Test each form after enabling and add any incompatible forms to the ""Form Protection Excluded Forms"" list."
+"Improve Your Store","Improve Your Store"
+"Input a form ID of a form if you want it to be ignored by the form protection.","Input a form ID of a form if you want it to be ignored by the form protection."
+"IP Address","IP Address"
+"IP Mode","IP Mode"
+"Last Seen At","Last Seen At"
+Main,Main
+"Manage Bots","Manage Bots"
+"Manage Extensions","Manage Extensions"
+"Missing data for item","Missing data for item"
+"Only Post","Only Post"
+"Path Prefix","Path Prefix"
+Pending,Pending
+"Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs.","Please <u>read the help descriptions, field descriptions, fieldset descriptions, and user guides</u> so you may configure this extension to suit your needs."
+"Please enter the CAPTCHA code to continue using our store.","Please enter the CAPTCHA code to continue using our store."
+"Please select an item(s) before submitting to the mass processor","Please select an item(s) before submitting to the mass processor"
+"Please verify you are human...","Please verify you are human..."
+RegExp,RegExp
+"Requesting IP (REMOTE_ADDR)","Requesting IP (REMOTE_ADDR)"
+Salt,Salt
+"Selected item(s) (%d) have been mass processed by the %s processor","Selected item(s) (%d) have been mass processed by the %s processor"
+"Selected item(s) (%d) have failed to be mass processed by the %s processor","Selected item(s) (%d) have failed to be mass processed by the %s processor"
+Settings,Settings
+"Some bots randomly try urls such as ""wp-login.php"" to try to identify your stores platform. You can add any such urls like this to auto-block anyone that visits them. <b>Note: </b> only 404 / invalid requests are checked","Some bots randomly try urls such as ""wp-login.php"" to try to identify your stores platform. You can add any such urls like this to auto-block anyone that visits them. <b>Note: </b> only 404 / invalid requests are checked"
+Status,Status
+"Submit Verification","Submit Verification"
+"Test As Bot","Test As Bot"
+"The date at which this bot will no longer be blocked. Leave blank for the default","The date at which this bot will no longer be blocked. Leave blank for the default"
+"The entered CAPTCHA was not correct. Please try again","The entered CAPTCHA was not correct. Please try again"
+"The maximum length of time in days that a ban of a bot will be in effect.","The maximum length of time in days that a ban of a bot will be in effect."
+"The status of a newly added bot. Set to ""pending"" if you want to manually verify them before blocking them.","The status of a newly added bot. Set to ""pending"" if you want to manually verify them before blocking them."
+"There is some suspicious traffic coming from your IP address. Please verify that you are human and you can return to browsing our store!","There is some suspicious traffic coming from your IP address. Please verify that you are human and you can return to browsing our store!"
+"This must be a valid regular expression with the beginning and ending ""/"". For example, /admin/. You can read the PHP preg documentation for more information","This must be a valid regular expression with the beginning and ending ""/"". For example, /admin/. You can read the PHP preg documentation for more information"
+"This will be prepended to honey pot urls. You should also add this to your robots.txt file to ensure good bots never got to the url. This is important if you enabled ""honeypot links"".","This will be prepended to honey pot urls. You should also add this to your robots.txt file to ensure good bots never got to the url. This is important if you enabled ""honeypot links""."
+"This will disable bot blocker on certain pages. Mostly useful for ensuring admin pages do not use it when testing.","This will disable bot blocker on certain pages. Mostly useful for ensuring admin pages do not use it when testing."
+"Uri Filter RegExps","Uri Filter RegExps"
+"User Agent","User Agent"
+"User Guides / Help","User Guides / Help"
+"Verification Cookie","Verification Cookie"
+"We apologize for the inconvenience, but we cannot tell if you are a human or a bot. Entering the CAPTCHA will help us verify that you are a human.","We apologize for the inconvenience, but we cannot tell if you are a human or a bot. Entering the CAPTCHA will help us verify that you are a human."
+"Your IP address will be added to the bot list for 6 hours and redirected to the frontend. Solving the CAPTCHA will remove you from the list, so you can view the frontend. You can also remove yourself from the bot list in Extendware -> Manage Extensions -> Bot Blocker -> Bots.","Your IP address will be added to the bot list for 6 hours and redirected to the frontend. Solving the CAPTCHA will remove you from the list, so you can view the frontend. You can also remove yourself from the bot list in Extendware -> Manage Extensions -> Bot Blocker -> Bots."

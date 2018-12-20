@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <global>
+        <blocks>
+            <customer>
+                <rewrite>
+                    <account_navigation>Softprodigy_Customerlinks_Block_Account_Navigation</account_navigation>
+                </rewrite>
+            </customer>
+        </blocks>
+    </global>
+        <frontend>
+        <layout>
+            <updates>
+                <softprodigy_customerlinks>
+                    <file>customerlinks.xml</file>
+                </softprodigy_customerlinks>
+            </updates>
+        </layout>
+    </frontend>
+</config>

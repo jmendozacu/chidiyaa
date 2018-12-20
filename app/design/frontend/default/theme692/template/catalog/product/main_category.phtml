@@ -1,0 +1,95 @@
+<?php
+
+$category = Mage::getModel('catalog/category')->load(9) ;
+      $catList = explode(",", $category->getChildren()) ;
+    //->addAttributeToSelect('*')
+   // ->setOrder('thumbnail_home', 'DESC');//or you can just add some attributes
+   // ->addAttributeToFilter('level', 2)//2 is actually the first level
+    //->addAttributeToFilter('is_active', 1)//if you want only active categories
+//;
+//print_r($categories);
+?>
+
+<div class="page-title category-title center">
+		<h1>OUR SHOP</h1>
+</div>
+<div class="clear"></div>
+<ul class="row-cat grid-clol-6 home-row-cat">
+<?php foreach($catList as $cat):  
+$subcategory = Mage::getSingleton('catalog/category')->load($cat) ;
+?>
+<?php //echo $category->getThumbnailHome() ?>
+<?php //if($subcategory->getShowCatimage()==0): ?>
+	<li class="col-item3">
+
+	<a href="<?php echo $subcategory->getCategoryIdUrl(); ?>">
+	        <img  src="<?php echo $subcategory->getResizedThumbnail(366,458); ?>"/ >
+			<!--img src="<?php //echo Mage::getBaseUrl('media').'catalog/category/'.$subcategory->getThumbnail(); ?>"/-->
+			<div class="content-center">
+				<div class="row-title"><?php echo $subcategory->getName(); ?></div>
+				<div class="row-button"><button class ="row-inner" >Shop</button></div>
+			</div>
+		</a>
+	</li>
+<?php //endif; ?>
+<?php endforeach;?>
+</ul>
+<?php 
+$categories = Mage::getModel('catalog/category')->getCollection()
+    ->addAttributeToSelect('*')
+    ->setOrder('thumbnail_home', 'ASC');//or you can just add some attributes
+   // ->addAttributeToFilter('level', 2)//2 is actually the first level
+    //->addAttributeToFilter('is_active', 1)//if you want only active categories
+;
+?>
+<div class="page-title category-title center">
+		<h1>OUR FEATURED COLLECTION</h1>
+</div>
+<div class="clear"></div>
+<ul class="row-cat grid-clol-6 home-row-cat feature">
+<?php foreach($categories as $category): ?>
+<?php //echo $category->getThumbnailHome() ?>
+<?php if($category->getShowCatimage()==1): ?>
+	<li class="col-item3">
+
+	<a href="<?php echo $category->getCategoryIdUrl(); ?>">
+			<!--<img  src="<?php //echo $category->getThumbnailImageUrl(); ?>"/>-->
+			<img  src="<?php echo $category->getResizedThumbnail(422,527); ?>"/ >
+			<!--img src="<?php //echo Mage::getBaseUrl('media').'catalog/category/'.$category->getThumbnail(); ?>"/-->
+			<div class="content-center">
+				<div class="row-title"><?php echo $category->getName(); ?></div>
+				<div class="row-button"><button class ="row-inner" >Shop</button></div>
+			</div>
+		</a>
+	</li>
+<?php endif; ?>
+<?php endforeach;?>
+</ul>
+
+<!---  Our Shop ---->
+
+
+<?php /*
+	$children = Mage::getModel('catalog/category')->getCategories(578);
+?>
+<div class="page-title category-title center">
+		<h1>FEATURED CATEGORY</h1>
+</div>
+<div class="clear"></div>
+<ul class="row-cat grid-clol-6 home-row-cat">
+<?php foreach($children as $category): ?>
+<?php if($category->getShowCatimage()==1): ?>
+	<li class="col-item3">
+
+	<a href="<?php echo $category->getCategoryIdUrl(); ?>">
+			<img  src="<?php echo $category->getThumbnailImageUrl(); ?>"/>
+			<div class="content-center">
+				<div class="row-title"><?php echo $category->getName(); ?></div>
+				<div class="row-button"><button class ="row-inner" >Shop</button></div>
+			</div>
+		</a>
+	</li>
+<?php endif; ?>
+<?php endforeach;?>
+</ul>
+*/ ?>

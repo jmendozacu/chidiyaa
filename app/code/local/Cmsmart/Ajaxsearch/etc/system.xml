@@ -1,0 +1,656 @@
+<?xml version="1.0"?>
+<config>
+ <tabs>
+      <cmsmart translate="label" module="ajaxsearch">
+        <label>CMSMART EXTENSIONS</label>
+        <sort_order>110</sort_order>
+      </cmsmart>
+ </tabs>
+    <sections>
+		<ajaxsearch translate="label" module="ajaxsearch">
+           	<label>Ajax Search</label>
+            <tab>cmsmart</tab>
+   	        <frontend_type>text</frontend_type>
+       	    <sort_order>1</sort_order>
+           	<show_in_default>1</show_in_default>
+           	<show_in_website>1</show_in_website>
+           	<show_in_store>1</show_in_store>
+            
+            <groups>
+                <info translate="label">
+                    <label>Cmsmart</label>
+                    <frontend_type>text</frontend_type> 
+                    <sort_order>999999</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store> 
+                    <comment>Ajaxsearch Autocomplete And Suggest - Extension powered by <![CDATA[<a href="http://www.cmsmart.net" target="_blank" style='text-decoration: none'><font color="#EF1313">CMSMART</font></a>.<br/><br/>]]>Visit our website: <![CDATA[<a href="http://www.cmsmart.net" target="_blank" style='text-decoration: none'><font color="#EF1313">wwww.cmsmart.net</font></a>]]> to view more themes and extension required for your magento store.<![CDATA[<br/><br/>]]> Write ticket and get support from our at: <![CDATA[<a href="http://cmsmart.net/support" target="_blank" style='text-decoration: none'><font color="#EF1313">Technical Support - Forum</font></a>.]]>  </comment>  
+                </info>
+                <settings translate="label">
+            		<label>Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>        
+                        <enabled translate="label comment">
+                            <label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <comment>Enable/Disable Extension</comment>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </enabled>
+                        <search_by_att translate="label comment">
+                            <label>Use search by attribute</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>Yes/No to use search by attribute</comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </search_by_att>
+                        <width translate="label comment">
+                            <label>Width (px)</label>
+							<frontend_type>text</frontend_type>	
+                            <comment>Width of frame result after search</comment>						
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </width>
+                        <border_color translate="label comment">
+                            <label>Border Color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Border color of frame result after search</comment>
+                            <sort_order>4</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </border_color>
+                        <border_width translate="label comment">
+                            <label>Border Width (px)</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Border width of frame result after search</comment>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </border_width>
+                        <hover_bg translate="label comment">
+                            <label>Hover Background</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Color background when hover product at frame result</comment>
+                            <sort_order>50</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </hover_bg>
+                        <title_bg translate="label comment">
+                            <label>Title Background</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <comment>Color background of title (ex: Suggest, Products, Categories, Pages) at frame result</comment>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </title_bg>
+                        <title_color translate="label comment">
+                            <label>Title Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <comment>Color of title (ex: Suggest, Products, Categories, Pages) at frame result</comment>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </title_color>
+                        <highlight_color translate="label comment">
+                            <label>Highlight Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <comment>Color of search keyword when appear in result</comment>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </highlight_color>
+                        <highlight_size translate="label comment">
+                            <label>Highlight Size</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Size of search keyword when appear in result</comment>
+                            <sort_order>90</sort_order>                            
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </highlight_size>
+                        <min_char translate="label comment">
+                            <label>Min char to search</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Minimum number of characters to search by extension</comment>
+                            <sort_order>100</sort_order>                            
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </min_char>
+                        <time_request>
+                            <label>Time to request (ms)</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>The time wait after enter keyword</comment>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </time_request>
+                        <noti_no_result>
+                            <label>Notice when no search results</label>
+                            <frontend_type>textarea</frontend_type>                            
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </noti_no_result>
+                        <noti_color>
+                            <label>Color of notice when no search results</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>400</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </noti_color>
+                    </fields>
+            </settings>
+            <searchbycategory>
+				<label>Search by category</label>
+                <frontend_type>text</frontend_type>
+				<sort_order>2</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+				<fields>
+					<enable translate="label comment">
+                        <label>Use search by category</label>
+                        <frontend_type>select</frontend_type>
+                        <comment>Yes/No to use search by category</comment>
+                        <sort_order>10</sort_order>
+                        <show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                    </enable>
+					<choosenumbersofcategory translate="label comment">
+                        <label>Choose numbers of category</label>
+                        <frontend_type>text</frontend_type>
+                        <comment>Choose numbers of category</comment>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+                    </choosenumbersofcategory>
+					<backgroundcategory>
+                            <label>Color of notice when no search results</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                    </backgroundcategory>
+					<backgroundcategoryhover>
+                            <label>Background Category Hover</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                    </backgroundcategoryhover>
+					<colorstateactive>
+                            <label>Color State Active</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                    </colorstateactive>
+					<backgroundheader>
+                            <label>Background Header Category Search</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                    </backgroundheader>
+				</fields>
+			</searchbycategory>
+            <suggest translate="label">
+            		<label>Suggest</label>
+                    <frontend_type>text</frontend_type>
+
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label comment">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>Yes/No suggest search display in frame result</comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </enable>                     
+                        <suggest_color translate="label comment">
+                            <label>Suggest Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </suggest_color>
+                        <count_color translate="label comment">
+                            <label>Count Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </count_color>
+                        <hover_color translate="label comment">
+                            <label>Hover Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </hover_color>
+                  </fields>
+            	</suggest>
+                <preview translate="label comment">
+            		<label>Product Preview</label>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label comment">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>Yes/No product search display in frame result</comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </enable>
+                        <number_product translate="label comment">
+                            <label>Number Product Show</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </number_product>
+                        <show_image translate="label comment">
+                            <label>Show Product Image</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_image>
+                        <show_name translate="label comment">
+                            <label>Show Product Name</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_name>
+                        <show_cat translate="label comment">
+                            <label>Show Category Of Product</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_cat>
+                        <show_attribute translate="label comment">
+                            <label>Show Attributes Of Product</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_attribute>
+
+                        <show_description translate="label comment">
+                            <label>Show Product Descrition</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_description>
+
+                        <show_price translate="label comment">
+                            <label>Show Product Price</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_price>
+                        
+                        <show_rating translate="label comment">
+                            <label>Show Product Rating</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_rating>
+                        
+                        <show_countreviews translate="label comment">
+                            <label>Show Count Review</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_countreviews>
+                        
+                        <show_viewall translate="label comment">
+                            <label>Show "View All"</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </show_viewall>
+                        
+                        <num_char_att translate="label comment">
+                            <label>Number character of Product Attribute Infomation</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </num_char_att>
+
+                        
+                        <num_char_description translate="label comment">
+                            <label>Number character of Product Descrition</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>23</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </num_char_description>
+
+                        <pro_title_color translate="label comment">
+                            <label>Product Name Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>24</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </pro_title_color>
+                        
+                        <pro_cat_color translate="label comment">
+                            <label>Category Name Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </pro_cat_color>
+                        
+                        <pro_cat_hover_color translate="label comment">
+                            <label>Category Name Hover Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </pro_cat_hover_color>
+                        
+                        <pro_countreviews_color translate="label comment">
+                            <label>Count Reviews Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </pro_countreviews_color>
+                        
+                        <pro_price_color translate="label comment">
+                            <label>Product Price Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </pro_price_color>
+                        
+                        <pro_old_price_color>
+                            <label>Product Old Price Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </pro_old_price_color>
+                        
+                        <pro_description_color translate="label comment">
+                            <label>Product Description Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </pro_description_color>
+
+                        <image_width translate="label comment">
+                            <label>Thumnail width (px)</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Width of image product</comment>
+                            <sort_order>121</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </image_width>
+                        
+                        <image_height translate="label comment">
+                            <label>Thumnail height (px)</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Height of image product</comment>
+                            <sort_order>122</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </image_height>
+
+                        <image_border_width translate="label comment">
+                            <label>Image border width (px)</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Border width of image product</comment>
+                            <sort_order>123</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </image_border_width>
+                        
+                        <image_border_color translate="label comment">
+                            <label>Image border color</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Border color of image product</comment>
+                            <sort_order>124</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </image_border_color>
+                        
+                        <sort_by>                           						
+                            <label>Sort by</label>                            
+                            <frontend_type>select</frontend_type>  
+                            <comment>Sort result by field of product</comment> 
+                            <source_model>ajaxsearch/source_SortBy</source_model>                         
+                            <sort_order>224</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                        					
+                        </sort_by>
+                        
+                        <order>
+                            <label>Order</label>                            
+                            <frontend_type>select</frontend_type>
+                            <comment>Order of sort result</comment>   
+                            <source_model>ajaxsearch/source_Order</source_model>                         
+                            <sort_order>324</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>           
+                        </order>
+                  </fields>
+            	</preview>
+                <category translate="label">
+            		<label>Category Preview</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label comment">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>Yes/No category search display in frame result</comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </enable>                   
+                        <cat_title_color translate="label comment">
+                            <label>Cattegory Title Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </cat_title_color>
+                        <cat_description_color translate="label comment">
+                            <label>Category Description Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </cat_description_color>
+                  </fields>
+            	</category>
+                
+                <page translate="label">
+            		<label>Page Preview</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label comment">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>Yes/No product search display in frame result</comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </enable>                      
+                        <page_title_color translate="label comment">
+                            <label>Page Title Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </page_title_color>
+                        <page_description_color translate="label comment">
+                            <label>Page Description Color</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <frontend_model>ajaxsearch/adminhtml_system_config_form_field_color</frontend_model>
+							<backend_model>ajaxsearch/system_config_backend_color</backend_model>
+                            <show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+                        </page_description_color>
+                  </fields>
+            	</page>
+            </groups>
+        </ajaxsearch>
+
+ 
+	</sections>
+</config>

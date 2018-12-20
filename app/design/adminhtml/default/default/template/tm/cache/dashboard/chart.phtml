@@ -1,0 +1,27 @@
+<div class="chart-toolbar">
+    <h3><?php echo $this->__('Recent Activity') ?></h3>
+    <div id="legend"></div>
+    <div class="settings">
+        <label for="range"><?php echo $this->__('Select Range') ?></label>
+        <?php echo $this->getRangeSelectHtml() ?>
+    </div>
+</div>
+<canvas id="chart" height="150"></canvas>
+
+<script type="text/javascript">
+var chart = new CacheActivityChart({
+    url: "<?php echo $this->getUrl('*/*/chart') ?>",
+    chart: {
+        data: {
+            labels: <?php echo Mage::helper('core')->jsonEncode($this->getLabels()) ?>,
+            datasets: [{
+                label: "<?php echo $this->__('Hits') ?>",
+                data: <?php echo Mage::helper('core')->jsonEncode($this->getHits()) ?>
+            }, {
+                label: "<?php echo $this->__('Misses') ?>",
+                data: <?php echo Mage::helper('core')->jsonEncode($this->getMisses()) ?>
+            }]
+        }
+    }
+});
+</script>

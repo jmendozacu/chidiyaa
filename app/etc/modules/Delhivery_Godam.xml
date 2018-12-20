@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Delhivery
+ * @category   Delhivery
+ * @package    Delhivery_Godam
+ * @copyright  Copyright (c) 2014 Delhivery. (http://www.delhivery.com)
+ * @license    Creative Commons Licence (CCL)
+ */
+ -->
+<config>
+    <modules>
+        <Delhivery_Godam>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Delhivery_Godam>
+    </modules>
+</config> 

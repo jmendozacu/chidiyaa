@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout>
+    <bulkgenerate_adminhtml_invoice_generate>
+        <reference name="content">
+            <block type="core/template" name="kuch_bhi_test" template="bulkgenerate/massgenerate.phtml">
+            </block>
+        </reference>
+    </bulkgenerate_adminhtml_invoice_generate>
+</layout>

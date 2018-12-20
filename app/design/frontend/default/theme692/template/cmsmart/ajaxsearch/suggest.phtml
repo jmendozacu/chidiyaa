@@ -1,0 +1,562 @@
+<?php
+/*____________________________________________________________________
+
+* Name Extension: Magento Ajaxsearch Autocomplete And Suggest
+
+* Author: The Cmsmart Development Team 
+
+* Date Created: 2013
+
+* Websites: http://cmsmart.net
+
+* Technical Support: Forum - http://cmsmart.net/support
+
+* GNU General Public License v3 (http://opensource.org/licenses/GPL-3.0)
+
+* Copyright © 2011-2013 Cmsmart.net. All Rights Reserved.
+
+______________________________________________________________________*/
+?>
+<?php
+$product_results=$this->getSuggestProducts();
+$product_results_all = $this->getSuggestProductsAll();
+$category_results = $this->getSuggestCategories();
+$catdes_results = $this->getSuggestCatDes();
+$page_results = $this->getSuggestPage();
+$query = $this->helper('ajaxsearch')->getQuery();
+$suggests=Mage::helper('catalogsearch')->getSuggestCollection();
+?>
+
+<?php
+if($suggests->count() && $this->enabledSuggest()) {        
+    ?>
+    
+    <ul class="suggested" >
+        <li class="title">Suggested Searches</li> 
+        <li>    
+    <?php
+    $i = 0;   
+    foreach($suggests as $_suggest)
+    {
+        if(++$i === $suggests->count()){
+            $note = '';
+        }
+        else
+        {
+            $note = ', &nbsp';
+        }
+        
+    ?>    
+        <a href="<?php echo $this->helper('catalogsearch')->getResultUrl().'?q='.$_suggest->getQueryText(); ?>">
+            <?php echo $_suggest->getQueryText() . '  <span>( ' . $_suggest->getNumResults() . ' )</span>'.$note; ?>
+        </a>
+    <?php
+                    
+    }
+    ?>
+        </li>
+    </ul>
+    <?php
+}
+    
+if($product_results_all->count()&& $this->enabledPreview() && $this->enabledSearchByAtt())
+{
+    ?>
+<ul class="ajaxsearch" >
+    <li class="title">Products</li>
+    <?php
+    $count_result = 0;
+    foreach($product_results_all as $pro) 
+    {
+        $has_att = 0;
+        $_product_att1 = Mage::getModel('catalog/product')->load($pro->getId());
+        
+        
+        $_additional1 = $this->getAdditionalData($_product_att1);
+        
+                                
+        foreach ($_additional1 as $_data1)
+        {                          
+                $value_att1 = strip_tags($_data1['value']);                    
+                $label_att1 = $_data1['label'];                          
+                if((stripos($label_att1,$query) !== false ) || (stripos($value_att1,$query) !== false) )
+                {
+                    $has_att = 1;
+                    break;
+                }                                           
+        };
+        if (($has_att == 1) || (stripos($pro->getName(),$query) !== false) || (stripos($pro->getDescription() ,$query) !== false) || (stripos($pro->getShortDescription() ,$query) !== false)  )        
+        {
+            $count_result = $count_result+1;
+            
+            if($count_result > Mage::getStoreConfig('ajaxsearch/preview/number_product'))
+            {
+                break;
+            }
+            else
+            {
+    ?>
+    
+    <li class="preview">                
+        <?php
+        if($this->isShowImage())
+        {
+        ?>
+    
+            <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $pro['url_path']; ?>"><img src="<?php echo $this->helper('catalog/image')->init($pro, 'small_image')->resize($this->getImageWidth(),$this->getImageHeight()); ?>" /></a>
+        <?php
+        }
+        ?>
+        <div class="meta_data">
+        <?php
+        if($this->isShowName()) {
+        ?>
+            <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $pro['url_path']; ?>">
+            <span class="title">
+            <?php         
+                $pro_name = $pro->getName(); 
+                
+                $pro_name = $this->helper('ajaxsearch')->str_highlight($pro_name,$query);
+                echo $pro_name;               
+            ?>
+            
+            </span>
+            </a>
+        <?php    
+        }
+                                
+        if($this->isShowCat())
+        {
+            $product = Mage::getModel('catalog/product')->load($pro->getId());
+            $cats = $product->getCategoryIds();
+            ?>
+            <div class='product_cat'>
+            <?php
+                $j = 0;
+                $count_cat = count($cats);
+                foreach($cats as $category_id) {
+                    $cat = Mage::getModel('catalog/category')->load($category_id);
+                    if(++$j === $count_cat){
+                        $note_cat = '';
+                    }
+                    else
+                    {
+                        $note_cat = '/';
+                    }
+                    ?>
+                    <a href="<?php echo $cat->getUrl(); ?>">
+                    <?php
+                        echo $cat->getName();
+                    ?>
+                    </a>
+                    <?php
+                    echo $note_cat;
+                }
+            ?>
+            </div>
+            <?php    
+        }
+
+        if($this->isShowRating()) 
+        {
+            $_reviews = Mage::getModel('review/review')->getResourceCollection();  
+        
+            $_reviews->addStoreFilter( Mage::app()->getStore()->getId() )  
+                ->addEntityFilter('product', $pro->getId())
+                ->addStatusFilter( Mage_Review_Model_Review::STATUS_APPROVED )  
+                ->setDateOrder()  
+                ->addRateVotes();               
+            $reviews_count = count($_reviews);
+            $avg = 0; 
+            $ratings = array(); 
+            if (count($_reviews) > 0){
+            foreach ($_reviews->getItems() as $_review): ?>
+            <?php foreach( $_review->getRatingVotes() as $_vote ): ?>
+                <?php $ratings[] = $_vote->getPercent();   ?>
+            <?php endforeach; ?>
+            
+            <?php 
+                echo $_review->getReviewsCount();
+                endforeach;   
+            $avg = array_sum($ratings)/count($ratings);  }             		        
+            ?>
+            
+            <div class="rating-box">  
+              <div class="rating" style="width: <?php echo ceil($avg) ; ?>%;"></div>
+              
+            </div>
+            <?php
+            if($this->isShowCountReviews() && $reviews_count > 0 )
+            { 
+            ?>
+                <div class="reviews_count"><?php echo $reviews_count;  ?> Review(s)</div> 
+            <?php
+            }     
+        }
+         
+        if($this->isShowPrice()) {
+        ?>
+            <div class="product-price">                  
+                  <?php 
+                  $formattedspecialprice = Mage::helper('ajaxsearch')->price(Mage::getModel('catalog/product')->load($pro->getId()));
+                  $formattedactualprice = Mage::helper('ajaxsearch')->priceOld(Mage::getModel('catalog/product')->load($pro->getId()));                                     
+                        if($formattedactualprice == $formattedspecialprice )
+                        {                                                     
+                            ?>
+                                <span class="price"><?php echo $formattedactualprice; ?></span>
+                            <?php    
+                        }
+                        else
+                        {                            
+                            ?>
+                                <span class="regular-price"><?php echo $formattedactualprice; ?></span>&nbsp;
+                                <span class="special-price"><?php echo $formattedspecialprice; ?></span>
+                            <?php    
+                        }
+                        
+                       
+                  ?>
+                  
+            </div>
+            
+        <?php
+        }
+        ?>
+        </div>                
+        <?php
+            
+        if($this->isShowAttribute()) 
+        {
+        ?>
+        <div class="product_att">
+        <?php                                  
+            foreach ($_additional1 as $_data)
+            {                             
+                    $value_att = strip_tags($_data['value']);
+                    $label_att = $_data['label'];                                                          
+                    if((stripos($label_att,$query) !== false ) || (stripos($value_att,$query) !== false) )
+                      {             
+                            $hg_value_att = $this->helper('ajaxsearch')->highlight($value_att,$query,100);                                                        
+                            $hg_value_att = $this->helper('ajaxsearch')->str_highlight($hg_value_att,$query);                          
+                            $hg_label_att = $this->helper('ajaxsearch')->str_highlight($label_att,$query);
+                            ?>
+                            <p>
+                                <span class="att_label"><?php echo $hg_label_att.': '; ?></span>
+                                <?php
+                                echo $hg_value_att;
+                                ?>
+                            </p>
+                            <?php
+                     }                     
+            };
+                                                                                                                                                
+        ?> 
+        </div>
+        
+        <?php
+        }                
+        if($this->isShowDescription())
+        {            
+            $description = $pro->getDescription();
+            if(stripos($description,$query) !== false)
+            { 
+                
+                $description = $this->helper('ajaxsearch')->highlight($description,$query,Mage::getStoreConfig('ajaxsearch/preview/num_char_description'));
+                $description = $this->helper('ajaxsearch')->str_highlight($description,$query);
+            }
+            else
+            {
+                $description = $pro->getShortDescription();
+                $description = $this->helper('ajaxsearch')->highlight($description,$query,Mage::getStoreConfig('ajaxsearch/preview/num_char_description'));
+                $description = $this->helper('ajaxsearch')->str_highlight($description,$query);
+            }            
+        ?>
+ 
+            <div class="description"><?php echo $description ; ?></div>
+        
+        <?php
+        }
+        
+        
+        ?>       
+    </li>
+    <?php 
+            }   
+        }
+          
+        
+    }; 
+  if($this->isShowViewall())
+  {
+      if($product_results_all->count() && $count_result > Mage::getStoreConfig('ajaxsearch/preview/number_product'))
+      {        
+      ?>        
+        <div class='view_all'><a href="<?php echo $this->helper('catalogsearch')->getResultUrl().'?'.$this->helper('ajaxsearch')->getSearchcategories().'q='.$this->helper('ajaxsearch')->getQuery(); ?>">View All Results &gt;&gt;</a></div>
+      <?php 
+      }
+  }
+  ?>
+</ul>
+    
+<?php            
+} 
+if(!$suggests->count() && $count_result == 0 && $this->enabledSearchByAtt())
+{
+            ?>
+            <ul class="ajaxsearch" >                
+                <li class="no-results"><?php echo Mage::getStoreConfig('ajaxsearch/settings/noti_no_result'); ?></li>                 
+            </ul>
+            <?php
+}
+
+/*_________________________________BEGIN____________________________________*/
+
+if($product_results->count()&& $this->enabledPreview() && !$this->enabledSearchByAtt())
+    {
+    ?>
+<ul class="ajaxsearch" >
+    <li class="title">Products</li>
+    <?php
+    foreach($product_results as $pro)
+    {         
+    ?>    
+    <li class="preview">
+             
+        <?php
+        if($this->isShowImage())
+        {
+        ?>    
+            <a class="preview-img" href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $pro['url_path']; ?>"><img src="<?php echo $this->helper('catalog/image')->init($pro, 'small_image')->resize($this->getImageWidth(),$this->getImageHeight()); ?>" /></a>
+        <?php
+        }
+        ?>
+        <div class="meta_data">
+        <?php
+        if($this->isShowName()) {
+        ?>
+            <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $pro['url_path']; ?>">
+            <span class="title">
+            <?php         
+                $pro_name = $pro->getName(); 
+                
+                $pro_name = $this->helper('ajaxsearch')->str_highlight($pro_name,$query);
+                echo $pro_name;               
+            ?>
+            
+            </span>
+            </a>
+        <?php    
+        }        
+        if($this->isShowCat())
+        {
+            $product = Mage::getModel('catalog/product')->load($pro->getId());
+            $cats = $product->getCategoryIds();
+            ?>
+            <div class='product_cat'>
+            <?php
+                $j = 0;
+                $count_cat = count($cats);
+                foreach($cats as $category_id) {
+                    $cat = Mage::getModel('catalog/category')->load($category_id);
+                    if(++$j === $count_cat){
+                        $note_cat = '';
+                    }
+                    else
+                    {
+                        $note_cat = '/';
+                    }
+                    ?>
+                    <a href="<?php echo $cat->getUrl(); ?>">
+                    <?php
+                        echo $cat->getName();
+                    ?>
+                    </a>
+                    <?php
+                    echo $note_cat;
+                }
+            ?>
+            </div>
+            <?php    
+        }
+        
+        if($this->isShowRating()) 
+        {
+            $_reviews = Mage::getModel('review/review')->getResourceCollection();  
+        
+            $_reviews->addStoreFilter( Mage::app()->getStore()->getId() )  
+                ->addEntityFilter('product', $pro->getId())
+                ->addStatusFilter( Mage_Review_Model_Review::STATUS_APPROVED )  
+                ->setDateOrder()  
+                ->addRateVotes(); 
+            $reviews_count = count($_reviews);
+            $avg = 0; 
+            $ratings = array(); 
+            if (count($_reviews) > 0){
+            foreach ($_reviews->getItems() as $_review): ?>
+            <?php foreach( $_review->getRatingVotes() as $_vote ): ?>
+                <?php $ratings[] = $_vote->getPercent();   ?>
+            <?php endforeach; ?>
+            <?php endforeach;   
+            $avg = array_sum($ratings)/count($ratings);  } 
+		        
+            ?>
+            <div class="rating-box">  
+              <div class="rating" style="width: <?php echo ceil($avg) ; ?>%;"></div> 
+               
+            </div>
+            <?php
+            if($this->isShowCountReviews() && $reviews_count > 0 )
+            { 
+            ?>
+                <div class="reviews_count"><?php echo $reviews_count;  ?> Review(s)</div> 
+            <?php
+            }                 
+        }
+         
+        if($this->isShowPrice()) {
+        ?>
+            <div class="product-price">                  
+                  <?php 
+                  $formattedspecialprice = Mage::helper('ajaxsearch')->price(Mage::getModel('catalog/product')->load($pro->getId()));
+                  $formattedactualprice = Mage::helper('ajaxsearch')->priceOld(Mage::getModel('catalog/product')->load($pro->getId()));                                     
+                        if($formattedactualprice == $formattedspecialprice )
+                        {                                                     
+                            ?>
+                                <span class="price"><?php echo $formattedactualprice; ?></span>
+                            <?php    
+                        }
+                        else
+                        {                            
+                            ?>
+                                <span class="regular-price"><?php echo $formattedactualprice; ?></span>&nbsp;
+                                <span class="special-price"><?php echo $formattedspecialprice; ?></span>
+                            <?php    
+                        }                                               
+                  ?>                  
+            </div>
+            
+        <?php
+        }
+        ?>
+        <?php
+        if($this->isShowDescription())
+        {            
+            $description = $pro->getDescription();
+            if(stripos($description,$query) !== false)
+            { 
+                
+                $description = $this->helper('ajaxsearch')->highlight($description,$query,Mage::getStoreConfig('ajaxsearch/preview/num_char_description'));
+                $description = $this->helper('ajaxsearch')->str_highlight($description,$query);
+            }
+            else
+            {
+                $description = $pro->getShortDescription();
+                $description = $this->helper('ajaxsearch')->highlight($description,$query,Mage::getStoreConfig('ajaxsearch/preview/num_char_description'));
+                $description = $this->helper('ajaxsearch')->str_highlight($description,$query);
+            }            
+        ?>
+ 
+            <div class="description"><?php echo $description ; ?></div>
+        </div>
+        
+        
+        <?php
+        }                
+        ?>
+          
+    </li>
+    <?php
+    //}
+  }
+  
+  if($product_results->count() >= Mage::getStoreConfig('ajaxsearch/preview/number_product') && $this->isShowViewall())
+  {
+    
+  ?>
+  
+    <div class='view_all'><a href="<?php echo $this->helper('catalogsearch')->getResultUrl().'?'.$this->helper('ajaxsearch')->getSearchcategories().'q='.$this->helper('ajaxsearch')->getQuery(); ?>">View All Results &gt;&gt;</a></div>
+  <?php 
+  }
+  ?>
+</ul>
+    
+<?php 
+} 
+?>
+<?php
+    if(!$suggests->count() && !$product_results->count() && !$this->enabledSearchByAtt())
+        {
+            ?>
+            <ul class="ajaxsearch" >
+                <li class="no-results"><?php echo Mage::getStoreConfig('ajaxsearch/settings/noti_no_result'); ?></li>
+            </ul>
+            <?php
+        }
+
+/*_________________________________END______________________________________*/
+        
+if($category_results->count()&& $this->enabledCat())
+{
+?>
+    <ul class="category">
+        <li class="title">Categories</li>
+        <?php 
+        foreach($category_results as $cat) {
+            
+        ?>
+        <li class="preview">
+            <a href="<?php echo $cat->getUrl(); ?>"><span class="title">
+                <?php 
+                    $cat_name = $cat->getName();
+                    $cat_name = $this->helper('ajaxsearch')->str_highlight($cat_name,$query);
+                    echo $cat_name;
+                ?>
+                </span>
+                <div class="description">
+                    <?php 
+                        $cat_des = $cat->getDescription(); 
+                        $cat_des = $this->helper('ajaxsearch')->highlight($cat_des,$query,Mage::getStoreConfig('ajaxsearch/preview/num_char_description'));
+                        $cat_des = $this->helper('ajaxsearch')->str_highlight($cat_des,$query);
+                        echo $cat_des;
+                    ?>
+                </div>
+            </a>
+        </li>
+        <?php
+        
+        };
+    
+    ?>
+    </ul>
+    <?php
+}
+
+if($page_results && $this->enabledPage())
+{
+?>
+    <ul class="page_rs">
+        <li class="title">Pages</li>
+        <?php 
+            foreach ($page_results as $page) {
+                $content =strip_tags($page['content']);
+                
+                $content= preg_replace('/{{(.*)}}/i', '', $content);
+                
+                $content = $this->helper('ajaxsearch')->highlight($content,$query,Mage::getStoreConfig('ajaxsearch/preview/num_char_description'));
+                $content = $this->helper('ajaxsearch')->str_highlight($content,$query);
+                
+                ?>
+                <li class="preview">
+                    <a href="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK) . $page['identifier']; ?>"><?php echo  '<span class=\'title\'>' . $page['title'] .'</span>';?>
+                        <div class="description"><?php echo $content; ?></div>
+                    </a>
+                </li>
+                <?php        
+            };
+            ?>
+            
+    </ul>
+    <?php
+};  
+?>
+

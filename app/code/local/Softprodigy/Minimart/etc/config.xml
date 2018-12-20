@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Softprodigy System Solutions Pvt. Ltd
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.idealiagroup.com/magento-ext-license.html
+ *
+ * @category    Softprodigy
+ * @package     Softprodigy_Minimart
+ * @copyright   Copyright (c) 2015 Softprodigy System Solutions Pvt. Ltd (http://www.softprodigy.com)
+ * @license    http://www.opensource.org/licenses/gpl-license.php  GNU General Public License
+ */
+ -->
+<config>
+    <modules>
+        <Softprodigy_Minimart>
+            <version>1.0.0</version>
+        </Softprodigy_Minimart>
+    </modules>
+    <frontend>
+        <routers>
+            <minimart>
+                <use>standard</use>
+                <args>
+                    <module>Softprodigy_Minimart</module>
+                    <frontName>minimart</frontName>
+                </args>
+            </minimart>
+        </routers>       
+    </frontend>
+    <global>	
+		<blocks>
+			<minimart>
+				<class>Softprodigy_Minimart_Block</class>
+			</minimart>
+		</blocks>
+		<models>
+			<minimart>
+				<class>Softprodigy_Minimart_Model</class>
+				<resourceModel>minimart_mysql4</resourceModel>
+			</minimart>
+			<minimart_mysql4>
+				<class>Softprodigy_Minimart_Model_Mysql4</class>
+			</minimart_mysql4>
+		</models>
+		<helpers>
+			<minimart>
+				<class>Softprodigy_Minimart_Helper</class>
+			</minimart>
+		</helpers>
+        <resources>
+            <minimart_setup>
+				<setup>
+					<module>Softprodigy_Minimart</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</minimart_setup>
+			<minimart_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</minimart_write>
+			<minimart_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</minimart_read>
+        </resources>
+    </global>
+    <admin>
+        <routers>
+            <minimart>
+                <use>admin</use>
+                <args>
+                    <module>Softprodigy_Minimart</module>
+                    <frontName>adminminimart</frontName>
+                </args>
+            </minimart>
+        </routers>
+    </admin>
+
+    <adminhtml>
+		<translate>
+			<modules>
+				<Softprodigy_Minimart>
+					<files>
+						<default>Softprodigy_Minimart.csv</default>
+					</files>
+				</Softprodigy_Minimart>
+			</modules>
+		</translate>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <minimart translate="title" module="minimart">
+                                            <title>OnGoBuyo</title>
+                                        </minimart>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+			<updates>
+				<minimart>
+					<file>minimart.xml</file>
+				</minimart>
+			</updates>
+		</layout>
+		
+		<events>
+			<sales_order_save_after>
+				<observers>
+					<minimart>
+						<type>singleton</type>
+						<class>minimart/observer</class>
+						<method>sendNotification</method>
+					</minimart>
+				</observers>
+			</sales_order_save_after>
+		</events>	
+    </adminhtml>
+    
+</config>

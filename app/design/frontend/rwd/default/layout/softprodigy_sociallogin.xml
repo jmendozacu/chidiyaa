@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout version="0.1.0">
+    <customer_account_login>
+        <reference name="customer_form_login">
+            <action method="setTemplate"><template>softprodigy_sociallogin/form/login.phtml</template></action>
+        </reference>
+    </customer_account_login>
+    <checkout_onepage_index>
+        <reference name="checkout.onepage">
+            <action method="setTemplate"><template>softprodigy_sociallogin/form/onepage.phtml</template></action>
+        </reference>
+    </checkout_onepage_index>
+    <aw_onestepcheckout_index_index>
+        <block type="softprodigy_sociallogin/button" name="softprodigy.sociallogin.aw" />
+        <reference name="content">
+            <action ifconfig="softprodigy_sociallogin/general/showoncheckout" method="insert">
+                <block>softprodigy.sociallogin.aw</block>
+            </action>
+        </reference>
+    </aw_onestepcheckout_index_index>
+</layout>

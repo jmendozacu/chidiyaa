@@ -1,0 +1,24 @@
+<?php
+$scriptUrl = $this->getRecaptcha()->getUrl() . '/challenge?k=' . $this->getRecaptcha()->getPublicKey();
+$iframeUrl = $this->getRecaptcha()->getUrl() . '/noscript?k=' . $this->getRecaptcha()->getPublicKey();
+?>
+<div class="page-title" style="margin-bottom: 0px">
+	<h1><?php echo $this->__('Please verify you are human...'); ?></h1>
+</div>
+<div class="std">
+	<p><b><?php echo $this->__('Please enter the CAPTCHA code to continue using our store.') ?></b> <?php echo $this->__("We apologize for the inconvenience, but we cannot tell if you are a human or a bot. Entering the CAPTCHA will help us verify that you are a human.") ?></p>
+</div>
+<div class="std">
+	<form method="post" action="<?php echo $this->getUrl('ewbotblocker/bot/verifyPost'); ?>">
+		<input type="hidden" name="<?php echo $this->getRedirectParamName() ?>" value="<?php echo $this->getRedirectParamValue() ?>">
+		<script type="text/javascript" src="<?php echo $scriptUrl; ?>"></script>
+		<noscript>
+			<iframe src="<?php echo $iframeUrl; ?>" height="300" width="500" frameborder="0"></iframe><br/>
+			<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+			<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+		</noscript>
+		<div class="buttons-set">
+			<button type="submit" class="button"><span><span><?php echo $this->__('Submit Verification') ?></span></span></button>
+		</div>
+	</form>
+</div>

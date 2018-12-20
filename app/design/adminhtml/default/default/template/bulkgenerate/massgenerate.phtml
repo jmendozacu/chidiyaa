@@ -1,0 +1,68 @@
+<?php
+$order_ids = $this->getRequest()->getParam('order_ids'); 
+ 
+$ajax_url = Mage::helper('Adminhtml')->getUrl('bulkgenerate/adminhtml_invoice/getOrderDetails');
+// echo $ajax_url;exit;
+?>
+<div class="orders" id="orders">
+	<div class="entry-edit">
+	    <div class="entry-edit-head">
+	        <h4 class="icon-head head-products">Items Ordered</h4>
+	    </div>
+	</div>
+	<div class="grid">
+	    <div class="hor-scroll">
+		    <table cellspacing="0" class="data" id="sales_order_grid_table">
+		    	<thead>
+		                <tr class="headings">
+		                        <th><span class="nobr">Order # </span></th>
+		                        <th><span class="nobr">Purchased On</span></th>
+		                        <th><span class="nobr">Status</span></th>
+		                        <th><span class="nobr">Invoice #</span></th>
+		                    </tr>
+		        </thead>
+		        <tbody>
+				<?php
+				$order_Collection = Mage::getModel('sales/order')->getCollection();
+				$order_Collection->addFieldToFilter('entity_id', array('in'=>$order_ids));
+				foreach ($order_Collection as $key => $order) {
+
+				?>
+				<tr id="order_<?php echo $order->getIncrementId(); ?>">
+					<td><span class="order_no"><?php echo $order->getIncrementId(); ?></span></td>
+					<td><span class="purchase_date"><?php echo $order->getCreatedAt(); ?></span></td>
+					<td><span id="status_<?php echo $order->getIncrementId(); ?>"><?php echo ucfirst($order->getStatus()); ?></span></td>
+					<td><span id="invoice_no_<?php echo $order->getIncrementId(); ?>"><img src="<?php echo $this->getSkinUrl('images/rule-ajax-loader.gif'); ?>" /></span></td>
+				</tr>
+					<!-- <div class="order_<?php //echo $order->getIncrementId(); ?>">
+						<div class="order_details">
+							<label>Order Id: </label><span><?php //echo $order_id; ?></span><br />
+							<label>Created At: </label><span class='created_date'></span><br />
+							<label>Invoice Id: </label><span class='invoice_id'></span><br />
+							<label>Status: </label><span class='status'></span><br />
+						</div>
+					</div> -->
+					<script type="text/javascript">
+						var data = {order_id:"<?php echo $order->getId(); ?>"} ;
+						new Ajax.Request("<?php echo $ajax_url; ?>", {
+							parameters:data,
+							method:'POST',
+							  onSuccess: function(response) {
+							  	var response_text = JSON.parse(response.responseText);
+							  		if(typeof response_text.error == 'undefined'){
+						  				$('invoice_no_<?php echo $order->getIncrementId(); ?>').update(response_text.invoice_id);	
+						  				$('status_<?php echo $order->getIncrementId(); ?>').update(response_text.status);	
+							  		}else{
+							  			$('invoice_no_<?php echo $order->getIncrementId(); ?>').update(response_text.error);	
+							  		}
+							  }
+							});
+					</script>
+				<?php
+				}
+				?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

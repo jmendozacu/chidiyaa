@@ -1,0 +1,215 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Softprodigy
+ * @package    Softprodigy_Message
+ * @copyright  Copyright (c) 2014 SoftProdigy <magento@softprodigy.com>
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Softprodigy_Message>
+            <version>1.3.0</version>
+        </Softprodigy_Message>
+    </modules>
+
+
+    <global>
+        <models>
+            <message>
+                <class>Softprodigy_Message_Model</class>
+                <resourceModel>message_entity</resourceModel>
+            </message>
+            <message_entity>
+	            <class>Softprodigy_Message_Model_Entity</class>
+	            <entities>
+	            	<message_entity>
+	            		<table>message_entity</table>
+	            	</message_entity>
+	            	<entity>
+	            		<table>message_entity</table>
+	            	</entity>
+	            </entities>
+	         </message_entity>
+        </models>
+        <blocks>
+            <message>
+                <class>Softprodigy_Message_Block</class>
+            </message>
+        </blocks>
+        <helpers>
+            <message>
+                <class>Softprodigy_Message_Helper</class>
+            </message>
+        </helpers>
+
+        <resources>
+         <message_setup>
+            <connection>
+               <use>core_setup</use>
+            </connection>
+         </message_setup>
+         <message_write>
+            <connection>
+               <use>core_write</use>
+            </connection>
+         </message_write>
+         <message_read>
+            <connection>
+               <use>core_read</use>
+            </connection>
+         </message_read>
+      </resources>
+      
+      <events>
+			<sales_order_invoice_save_after >
+				<observers>
+					<orderstatus>
+						<type>singleton</type>
+						<class>message/observer</class>
+						<method>checkOrder</method>
+					</orderstatus>
+				</observers>
+			</sales_order_invoice_save_after>
+		</events>
+		<events>
+			<sales_order_place_after>
+				<observers>
+					<orderstatus>
+						<type>singleton</type>
+						<class>message/observer</class>
+						<method>sendAccMsg</method>
+					</orderstatus>
+				</observers>
+			</sales_order_place_after>
+		</events>
+		<events>
+			<sales_order_shipment_save_after>
+				<observers>
+					<orderstatus>
+						<type>singleton</type>
+						<class>message/observer</class>
+						<method>sendAccShip</method>
+					</orderstatus>
+				</observers>
+			</sales_order_shipment_save_after>
+		</events>
+		<events>
+			<sales_order_save_after>
+				<observers>
+					<orderstatus>
+						<type>singleton</type>
+						<class>message/observer</class>
+						<method>sendAccComp</method>
+					</orderstatus>
+				</observers>
+			</sales_order_save_after>
+		</events>
+		<template>
+		<email>
+			<custom_email_template1 module="message">
+				<label>message custom email module</label>
+				<file>message_custom_email1.html</file>
+				<type>html</type>
+			</custom_email_template1>
+		</email>
+	</template>
+    </global>
+
+    <admin>
+        <routers>
+            <message>
+                <use>admin</use>
+                <args>
+                    <module>Softprodigy_Message</module>
+                    <frontName>message</frontName>
+                </args>
+            </message>
+        </routers>
+    </admin>
+
+    <adminhtml>
+		<menu>
+			<messagelinks translate="title" module="message">
+				<title>Messages</title>
+				<sort_order>91</sort_order> 
+				<children>
+					<managemessage translate="title" module="message">
+						<title>Send SMS to any number</title>
+						<sort_order>11</sort_order> 
+						<action>message/adminhtml_message/edit</action>
+					</managemessage>
+				</children>
+				<children>
+					<customermessage translate="title" module="message">
+						<title>Send SMS to Customers</title>
+						<sort_order>21</sort_order> 
+						<action>message/adminhtml_Index/index</action>
+					</customermessage>
+				</children>
+				<children>
+					<customeremail translate="title" module="message">
+						<title>Send email to any Id</title>
+						<sort_order>31</sort_order> 
+						<action>message/adminhtml_Email/edit</action>
+					</customeremail>
+				</children>
+				<children>
+					<customeremailall translate="title" module="message">
+						<title>Send email to customers</title>
+						<sort_order>41</sort_order> 
+						<action>message/adminhtml_Email/index</action>
+					</customeremailall>
+				</children>
+			</messagelinks>
+		</menu>
+		
+
+        <acl>
+            <resources>
+            	<all>
+					<title>Allow everything</title>
+				</all>
+                <admin>
+                    <children>
+                        <message>
+                            <title>Message</title>
+                            <products>
+                        		<scheduler>
+                           			 <title>Message Products</title>
+                                </scheduler>
+                            </products>
+                        </message>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <message translate="title" module="message">
+                                            <title>Message</title>
+                                        </message>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+
+		<layout>
+			<updates>
+				<message module="Softprodigy_Message">
+					<file>message.xml</file>
+				</message>
+			</updates>
+		</layout>
+    </adminhtml>
+</config>

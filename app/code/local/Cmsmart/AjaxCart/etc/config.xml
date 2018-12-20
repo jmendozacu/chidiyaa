@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Cmsmart
+ * @package     Cmsmart_ajaxcart
+ * @copyright   Copyright (c) 2013 Cmsmart.
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Cmsmart_AjaxCart>
+            <version>1.0.0</version>
+        </Cmsmart_AjaxCart>
+    </modules>
+	
+    <global>
+        <blocks>
+            <ajaxcart>
+                <class>Cmsmart_AjaxCart_Block</class>
+            </ajaxcart>
+        </blocks>
+	
+        <helpers>
+            <ajaxcart>
+                <class>Cmsmart_AjaxCart_Helper</class>
+            </ajaxcart>
+			<ajaxcart>
+                <class>Cmsmart_AjaxCart_Helper</class>
+            </ajaxcart>
+        </helpers>
+		<models>
+            <ajaxcart>
+                <class>Cmsmart_AjaxCart_Model</class>
+            </ajaxcart>
+		</models>
+		<!--
+		<models>
+           <customer>
+               <rewrite>
+                   <customer_api>Super_Awesome_Model_Example_Of_Customer_Api</customer_api>
+               </rewrite>
+           </customer>
+		</models>
+		
+		<blocks>
+           <sendfriend>
+               <rewrite>
+                   <send>Super_Awesome_Model_Example_Send</send>
+               </rewrite>
+           </sendfriend>
+       </blocks>
+	   -->
+    </global>
+
+    <frontend>
+        <routers>
+            <ajaxcart>
+                <use>standard</use>
+                <args>
+                    <module>Cmsmart_AjaxCart</module>
+                    <frontName>ajaxcart</frontName>
+                </args>
+            </ajaxcart>
+        </routers>
+        <layout>
+            <updates>
+                <ajaxcart>
+                    <file>cmsmart/cmsmart_ajaxcart.xml</file>
+                </ajaxcart>
+            </updates>
+        </layout>
+    </frontend>
+	
+
+    <adminhtml> 	
+		<translate>
+            <modules>
+                <Cmsmart_AjaxCart>
+                    <files>
+                        <default>Cmsmart_AjaxCart.csv</default>
+                    </files>
+                </Cmsmart_AjaxCart>
+            </modules>
+        </translate>
+		
+		
+		<acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+										<ajaxcart translate="title" module="ajaxcart">
+											<title>Ajax Cart Settings</title>
+											<sort_order>52</sort_order>
+										</ajaxcart>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml> 
+
+
+    <default>
+        <ajaxcart>
+			<viewsetting>
+				<enableview>1</enableview>
+				<usejquery>1</usejquery>
+				<enableitemupdate>1</enableitemupdate>
+				<enableupdate>0</enableupdate>
+				<enablecheckout>1</enablecheckout>
+				<enableclear>0</enableclear>
+				<linkcartclass>ul.links a.top-link-cart</linkcartclass>
+				<imagewidth>65</imagewidth>
+				<imageheight>65</imageheight>
+                <ajaxcart_left>0</ajaxcart_left>
+                <ajaxcart_width>320</ajaxcart_width>
+                <background_color>FFFFFF</background_color>
+				<border_size>0</border_size>
+                <border_color>DDDDDD</border_color>
+                <enableicon>0</enableicon>
+				<carticon>cart.png</carticon>
+				<boxshadow>0 0 3px #DDDDDD</boxshadow>
+				<themeoptions>default</themeoptions>
+            </viewsetting>
+			
+			<optionview>
+                <background_color>FFFFFF</background_color>
+				<border_size>5</border_size>
+                <border_color>DDDDDD</border_color>
+            </optionview>			
+			
+        </ajaxcart>
+    </default>
+</config>

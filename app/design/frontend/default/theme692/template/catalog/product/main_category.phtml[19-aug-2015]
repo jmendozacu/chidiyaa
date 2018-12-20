@@ -1,0 +1,20 @@
+<?php
+$categories = Mage::getModel('catalog/category')->getCollection()
+    ->addAttributeToSelect('*')//or you can just add some attributes
+    ->addAttributeToFilter('level', 2)//2 is actually the first level
+    ->addAttributeToFilter('is_active', 1)//if you want only active categories
+;
+?>
+<div class="clear"></div>
+<ul class="row-cat grid-clol-6">
+<?php foreach($categories as $category): ?>
+	<li class="col-item3">
+	<a href="<?php echo $category->getCategoryIdUrl(); ?>">
+			<img  src="<?php echo $category->getThumbnailImageUrl(); ?>" />
+			<div class="content-center">
+				<div class="row-title"><?php echo $category->getName(); ?></div>
+			</div>
+		</a>
+	</li>
+<?php endforeach;?>
+</ul>

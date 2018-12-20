@@ -1,0 +1,66 @@
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<?php
+	$w = 100; $h = 160;
+?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+    <div class="product-essential">
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+
+        <div class="product-shop">
+            <div class="product-name">
+            <?php
+            	$imgsrc = $this->helper('catalog/image')->init($_product, 'image')->resize($w,$h);
+			?>
+            	<img id="image" src="<?php echo $imgsrc; ?>" width="<?php echo $w; ?>" height="<?php echo $h; ?>" /> 
+                <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                <div style="clear:both;"></div>
+                <ul class="messages"><li class="error-msg"><ul><li><span><?php echo $this->__("Please specify the product's required option(s)")?></span></li></ul></li></ul>
+            </div>
+            
+            <?php echo $this->getChildHtml('product_type_data') ?>
+            <?php //echo $this->getTierPriceHtml() ?>
+            <?php //echo $this->getChildHtml('extrahint') ?>
+            
+            
+            <?php if (!$this->hasOptions()):?>
+                <div class="add-to-box">
+                    <?php if($_product->isSaleable()): ?>
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                    <?php endif; ?>
+                    <?php //echo $this->getChildHtml('addto') ?>
+                </div>
+                <?php echo $this->getChildHtml('extra_buttons') ?>
+            <?php elseif (!$_product->isSaleable()): ?>
+                <div class="add-to-box">
+                    <?php echo $this->getChildHtml('addto') ?>
+                </div>
+            <?php endif; ?>
+            
+            <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+            <?php endif;?>
+
+        </div>
+
+        <div class="clearer"></div>
+        <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+            <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+        <?php endif;?>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+		var productAddToCartForm = new VarienForm('product_addtocart_form');
+    //]]>
+    </script>
+    </div>
+</div>
+<div style="clear:both;"></div>
